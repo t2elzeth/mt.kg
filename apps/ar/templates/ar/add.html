@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Добавить AR проект {% endblock title %} {% block content %}
+<form method="post" class="form-group" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    <label for="id_title">Название</label>
+    <input class="input-form" type="text" id="id_title" name="title" placeholder="Название проекта">
+    <label for="id_img">Картинка (.png / .jpg)</label>
+    <div class="input-valid">
+        <input class="input-form file-input" type="file" name="img" id="id_img">
+    </div>
+    <label for="id_video">Видео (.mp4)</label>
+    <div class="input-valid">
+        <input class="input-form file-input" id="id_video" type="file" name="video">
+    </div>
+    <input type="submit" class="input-form btn-form" value="ЗАГРУЗИТЬ">
+</form>
+<div class="css-loading-off css-loading">
+    <div id="fountainTextG">
+        <div id="fountainTextG_1" class="fountainTextG">З</div>
+        <div id="fountainTextG_2" class="fountainTextG">а</div>
+        <div id="fountainTextG_3" class="fountainTextG">г</div>
+        <div id="fountainTextG_4" class="fountainTextG">р</div>
+        <div id="fountainTextG_5" class="fountainTextG">у</div>
+        <div id="fountainTextG_6" class="fountainTextG">з</div>
+        <div id="fountainTextG_7" class="fountainTextG">к</div>
+        <div id="fountainTextG_8" class="fountainTextG">а</div>
+        <div id="fountainTextG_9" class="fountainTextG">.</div>
+        <div id="fountainTextG_10" class="fountainTextG">.</div>
+        <div id="fountainTextG_11" class="fountainTextG">.</div>
+    </div>
+</div>
+</div>
+<script>
+    let loadingOf = document.querySelector('.css-loading-off');
+    let btnForm = document.querySelector('.btn-form');
+    btnForm.onclick = function() {
+        loadingOf.style.opacity = '100%';
+    }
+</script>
+{% endblock content %}

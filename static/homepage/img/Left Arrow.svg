@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Left_Arrow" data-name="Left Arrow" transform="translate(-376 -1917)">
+    <g id="Эллипс_1" data-name="Эллипс 1" transform="translate(376 1917)" fill="none" stroke="#f1cdb3" stroke-width="2">
+      <circle cx="25" cy="25" r="25" stroke="none"/>
+      <circle cx="25" cy="25" r="24" fill="none"/>
+    </g>
+    <image id="long-left-arrow" width="15" height="7" transform="translate(393 1938)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAABHNCSVQICAgIfAhkiAAAAG9JREFUGFeVkKENgEAQBOc7QGHAgflvgoaQFIbAQwEEuQ5DI0/uAwnyWHnZ2c1eyDljSin1QCVpLweHgsEPuAGjpNnBFUuIMVqjgQ2wAOcf2MDBC3x91tw+zR2wApc36N38Bky/Nn++bQG1pMPbfANGlyWcjxlNhwAAAABJRU5ErkJggg=="/>
+  </g>
+</svg>
