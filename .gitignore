@@ -63,7 +63,9 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-
+static/img-tracking/data/nft/
+media/videos/
+media/images/
 # Flask stuff:
 instance/
 .webassets-cache

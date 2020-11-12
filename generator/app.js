@@ -1,17 +1,14 @@
 const path = require("path");
 const fs = require('fs');
-const glob = require('glob');
 const readlineSync = require('readline-sync');
 const inkjet = require('inkjet');
 const im = require('imagemagick');
 const PNG = require('pngjs').PNG;
-var artoolkit_wasm_url = './libs/NftMarkerCreator_wasm.wasm';
 var Module = require('./libs/NftMarkerCreator_wasm.js');
 
 // GLOBAL VARs
 var params = [];
 
-// ✅This works:
 var validImageExt = [".jpg", ".jpeg", ".png"];
 
 var srcImage;
@@ -30,10 +27,6 @@ var foundOutputPath = {
     i: -1
 }
 
-var noConf = false;
-var noDemo = false;
-var onlyConfidence = false;
-
 var imageData = {
     sizeX: 0,
     sizeY: 0,
@@ -43,18 +36,11 @@ var imageData = {
 }
 
 Module.onRuntimeInitialized = async function() {
-
     for (let j = 2; j < process.argv.length; j++) {
         if (process.argv[j].indexOf('-i') !== -1 || process.argv[j].indexOf('-I') !== -1) {
             foundInputPath.b = true;
             foundInputPath.i = j + 1;
             j++;
-        } else if (process.argv[j] == "-noConf") {
-            noConf = true;
-        } else if (process.argv[j] == "-noDemo") {
-            noDemo = true;
-        } else if (process.argv[j] == "-onlyConfidence") {
-            onlyConfidence = true;
         } else if (process.argv[j].indexOf('-o') !== -1 || process.argv[j].indexOf('-O') !== -1) {
             foundOutputPath.b = true;
             foundOutputPath.i = j + 1;
@@ -72,7 +58,6 @@ Module.onRuntimeInitialized = async function() {
     }
 
     if (foundOutputPath.b) {
-        // outputPath = path.join(__dirname, process.argv[foundOutputPath.i]);
         outputPath = process.argv[foundOutputPath.i];
         if (!outputPath.startsWith('/'))
             outputPath = '/' + outputPath;
@@ -105,10 +90,6 @@ Module.onRuntimeInitialized = async function() {
         buffer = fs.readFileSync(srcImage);
     }
 
-
-    // if(!fs.existsSync(path.join(__dirname, '/output/'))){
-    //     fs.mkdirSync(path.join(__dirname, '/output/'));
-    // }
     console.log('Check output path: ' + path.join(__dirname, outputPath));
     if (!fs.existsSync(path.join(__dirname, outputPath))) {
         fs.mkdirSync(path.join(__dirname, outputPath));
@@ -119,37 +100,6 @@ Module.onRuntimeInitialized = async function() {
     } else if (extName.toLowerCase() == ".png") {
         usePNG(buffer);
     }
-    // console.log('Calculate Quality');
-    let confidence = calculateQuality();
-
-    let txt = " - - - - - ";
-    if (confidence.l != 0) {
-        let str = txt.split(" ");
-        str.pop();
-        str.shift();
-        for (let i = 0; i < parseInt(confidence.l); i++) {
-            str[i] = " *";
-        }
-        str.push(" ");
-        txt = str.join("");
-    }
-
-    if (onlyConfidence) {
-        console.log("%f", confidence.l);
-        process.exit(0);
-    }
-
-    console.log("\nConfidence level: [" + txt + "] %f/5 || Entropy: %f || Current max: 5.17 min: 4.6", confidence.l, confidence.e)
-
-
-    // if(!noConf){
-    //     const answer = readlineSync.question(`\nDo you want to continue? (Y/N)\n`);
-
-    //     if( answer == "n"){
-    //         console.log("\nProcess finished by the user! \n");
-    //         process.exit(1);
-    //     }
-    // }
 
     let paramStr = params.join(' ');
 
@@ -176,48 +126,14 @@ Module.onRuntimeInitialized = async function() {
     let contentFset = Module.FS.readFile(filenameFset);
     let contentFset3 = Module.FS.readFile(filenameFset3);
 
-    // fs.writeFileSync(path.join(__dirname, '/output/') + fileName + ext, content);
-    // fs.writeFileSync(path.join(__dirname, '/output/') + fileName + ext2, contentFset);
-    // fs.writeFileSync(path.join(__dirname, '/output/') + fileName + ext3, contentFset3);
-
     fs.writeFileSync(path.join(__dirname, outputPath) + fileName + ext, content);
     fs.writeFileSync(path.join(__dirname, outputPath) + fileName + ext2, contentFset);
     fs.writeFileSync(path.join(__dirname, outputPath) + fileName + ext3, contentFset3);
-
-    if (!noDemo) {
-        console.log("\nFinished marker creation!\nNow configuring demo! \n")
-
-        const markerDir = path.join(__dirname, '/demo/public/marker/');
-
-        if (!fs.existsSync(markerDir)) {
-            fs.mkdirSync(markerDir);
-        }
-
-        let demoHTML = fs.readFileSync("./demo/nft.html").toString('utf8').split("\n");
-        addNewMarker(demoHTML, fileName);
-        let newHTML = demoHTML.join('\n');
-
-        fs.writeFileSync("./demo/nft.html", newHTML, { encoding: 'utf8', flag: 'w' });
-
-        const files = fs.readdirSync(markerDir);
-        for (const file of files) {
-            fs.unlink(path.join(markerDir, file), err => {
-                if (err) throw err;
-            });
-        }
-
-        fs.writeFileSync(markerDir + fileName + ext, content);
-        fs.writeFileSync(markerDir + fileName + ext2, contentFset);
-        fs.writeFileSync(markerDir + fileName + ext3, contentFset3);
-
-        console.log("Finished!\nTo run demo use: 'npm run demo'");
-    }
 
     process.exit(0);
 }
 
 async function useJPG(buf) {
-
     inkjet.decode(buf, function(err, decoded) {
         if (err) {
             console.log("\n" + err + "\n");
@@ -246,20 +162,16 @@ async function useJPG(buf) {
     });
 
     await extractExif(buf);
-    // console.log('after extractExif')
 }
 
 function extractExif(buf) {
     return new Promise((resolve, reject) => {
-        // console.log('extractExif')
         inkjet.exif(buf, async function(err, metadata) {
-            // console.log('exif')
             if (err) {
                 console.log("\n" + err + "\n");
                 process.exit(1);
             } else {
                 if (metadata == null || metadata == undefined || Object.keys(metadata).length == undefined || Object.keys(metadata).length <= 0) {
-                    // console.log(metadata);
                     let ret = await imageMagickIdentify(srcImage);
                     console.log('ret:', ret); {
                         if (ret.err) {
@@ -272,11 +184,6 @@ function extractExif(buf) {
                                 let valWH = getValues(answerWH, "wh");
                                 imageData.sizeX = valWH.w;
                                 imageData.sizeY = valWH.h;
-
-                                // var answerNC = readlineSync.question('Inform the number of channels(nc):(black and white images have NC=1, colored images have NC=3) e.g NC=3 \n');
-
-                                // let valNC = getValues(answerNC, "nc");
-                                // imageData.nc = valNC;
 
                                 var answerDPI = readlineSync.question('Inform the DPI: e.g DPI=220 [Default = 72](Press enter to use default)\n');
 
@@ -291,7 +198,6 @@ function extractExif(buf) {
                                 process.exit(1);
                             }
                         } else {
-                            //console.log(ret.features);
                             imageData.sizeX = ret.features.width;
                             imageData.sizeY = ret.features.height;
                             var resolution = ret.features.resolution;
@@ -301,7 +207,6 @@ function extractExif(buf) {
                                 if (resolutions.length == 2) {
                                     dpi = Math.min(parseInt(resolutions[0]), parseInt(resolutions[1]));
                                     if (dpi == null || dpi == undefined || dpi == NaN) {
-                                        // console.log("\nWARNING: No DPI value found! Using 72 as default value!\n")
                                         dpi = 72;
                                     }
                                 }
@@ -311,7 +216,6 @@ function extractExif(buf) {
                             }
 
                             imageData.dpi = dpi;
-                            // console.log(imageData);
                         }
                     }
                 } else {
@@ -343,25 +247,12 @@ function extractExif(buf) {
                         imageData.sizeY = metadata.ImageLength.value;
                     }
 
-                    if (metadata.SamplesPerPixel == null || metadata.ImageWidth == undefined) {
-                        // var answer = readlineSync.question('The image does not contain the number of channels(nc), do you want to inform it?[y/n]\n');
-
-                        // if(answer == "y"){
-                        //     var answer2 = readlineSync.question('Inform the number of channels(nc):(black and white images have NC=1, colored images have NC=3) e.g NC=3 \n');
-
-                        //     let vals = getValues(answer2, "nc");
-                        //     imageData.nc = vals;
-                        // }else{
-                        //     console.log("It's not possible to proceed without the number of channels!")
-                        //     process.exit(1);
-                        // }
-                    } else {
+                    if (metadata.SamplesPerPixel == null || metadata.ImageWidth == undefined) {} else {
                         imageData.nc = metadata.SamplesPerPixel.value;
                     }
                     imageData.dpi = dpi;
                 }
             }
-            // console.log('extractExif resolve')
             resolve(true);
         });
     })
@@ -407,7 +298,6 @@ function usePNG(buf) {
 function imageMagickIdentify(srcImage) {
     return new Promise((resolve, reject) => {
         im.identify(srcImage, function(err, features) {
-            //console.log(err, features);
             resolve({ err: err, features: features });
         })
     })
@@ -482,60 +372,4 @@ function rgbaToRgb(arr) {
         newArr.push(b);
     }
     return newArr;
-}
-
-function calculateQuality() {
-    // console.log('calculateQuality', imageData)
-    let gray = toGrayscale(imageData.array);
-    let hist = getHistogram(gray);
-    let ent = 0;
-    let totSize = imageData.sizeX * imageData.sizeY;
-    for (let i = 0; i < 255; i++) {
-        if (hist[i] > 0) {
-            let temp = (hist[i] / totSize) * (Math.log(hist[i] / totSize));
-            ent += temp;
-        }
-    }
-
-    let entropy = (-1 * ent).toFixed(2);
-    // console.log(entropy)
-    let oldRange = (5.17 - 4.6);
-    let newRange = (5 - 0);
-    let level = (((entropy - 4.6) * newRange) / oldRange);
-
-    if (level > 5) {
-        level = 5;
-    } else if (level < 0) {
-        level = 0;
-    }
-    return { l: level.toFixed(2), e: entropy };
-}
-
-function toGrayscale(arr) {
-    let gray = [];
-    for (let i = 0; i < arr.length; i += 3) {
-        let avg = (arr[i] + arr[i + 1] + arr[i + 2]) / 3;
-        gray.push(parseInt(avg));
-    }
-    return gray;
-}
-
-function getHistogram(arr) {
-    let hist = [256];
-    for (let i = 0; i < arr.length; i++) {
-        hist[i] = 0;
-    }
-    for (let i = 0; i < arr.length; i++) {
-        hist[arr[i]]++;
-    }
-    return hist;
-}
-
-function addNewMarker(text, name) {
-    for (let i = 0; i < text.length; i++) {
-        if (text[i].trim().includes("<script>MARKER_NAME =")) {
-            text[i] = "<script>MARKER_NAME = '" + name + "'</script>"
-            break;
-        }
-    }
 }

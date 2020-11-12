@@ -14,10 +14,10 @@ from .mixins import CustomLoginRequiredMixin
 from .models import AR
 
 logging.basicConfig(
-    filename=os.path.join(settings.BASE_DIR, 'add.log'), 
-    filemode='w', 
+    filename=os.path.join(settings.BASE_DIR, 'add.log'),
+    filemode='w',
     level=logging.INFO
-    )
+)
 
 
 class AllArView(View):
@@ -73,20 +73,16 @@ class AddArView(CustomLoginRequiredMixin, View):
             if vid_queryset:
                 return HttpResponse('Video with that name already exists. Try to rename your image')
 
-
             _, img_ext = os.path.splitext(img.name)
             if img_ext.lower() not in self.allowed_image_exts:
                 return HttpResponse('Invalid image type. Should be ' + ' or '.join(self.allowed_image_exts))
 
-
-            if img.size < 100_000:
-                return HttpResponse('Too small image')
-
+            # if img.size < 100_000:
+            #     return HttpResponse('Too small image')
 
             _, vid_ext = os.path.splitext(vid.name)
             if vid_ext.lower() != '.mp4':
                 return HttpResponse('Invalid video type. Should be .mp4')
-
 
             form.save()
             logging.info('Form has been saved')
@@ -94,11 +90,12 @@ class AddArView(CustomLoginRequiredMixin, View):
             img_path = os.path.join('../media/images', img.name)
             script_path = os.path.join(settings.BASE_DIR, 'generator/app.js')
 
+            print(img_path)
+
             stderr, stdout = node_run(
                 script_path,
                 '-i',
                 img_path,
-                '-noDemo'
             )
             logging.info('Node has run')
             logging.info(stderr)
@@ -106,6 +103,7 @@ class AddArView(CustomLoginRequiredMixin, View):
             return redirect('all_ar')
         else:
             return HttpResponse('Your form is invalid')
+
 
 class Custom50SomView(View):
     def get(self, request):
