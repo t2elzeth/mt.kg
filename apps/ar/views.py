@@ -20,7 +20,7 @@ logging.basicConfig(
 )
 
 
-class AllArView(View):
+class AllArView(CustomLoginRequiredMixin, View):
     def get(self, request):
         ars = AR.objects.all()
         context = {
@@ -77,8 +77,8 @@ class AddArView(CustomLoginRequiredMixin, View):
             if img_ext.lower() not in self.allowed_image_exts:
                 return HttpResponse('Invalid image type. Should be ' + ' or '.join(self.allowed_image_exts))
 
-            # if img.size < 100_000:
-            #     return HttpResponse('Too small image')
+            if img.size < 50_000:
+                return HttpResponse('Too small image')
 
             _, vid_ext = os.path.splitext(vid.name)
             if vid_ext.lower() != '.mp4':
