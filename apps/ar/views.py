@@ -90,8 +90,6 @@ class AddArView(CustomLoginRequiredMixin, View):
             img_path = os.path.join('../media/images', img.name)
             script_path = os.path.join(settings.BASE_DIR, 'generator/app.js')
 
-            print(img_path)
-
             stderr, stdout = node_run(
                 script_path,
                 '-i',
