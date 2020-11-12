@@ -20,10 +20,9 @@ Make migrations and create super user
 ```
 
 And then install all required modules for nodejs app to work.
-Go to `generator/` directory and delete `node_modules/`. Don't worry, it will be created again as you start installing all modules back
+Go to `generator/` directory and start installing all modules back
 ```
 cd generator/
 
-rm -rf node_modules/
 npm i
 ```
