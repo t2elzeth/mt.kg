@@ -1,279 +1,265 @@
 {% load static %}
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/normalize.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap" rel="stylesheet">
-    <title></title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
 </head>
 
 <body>
-
-
-    <div class="fixed-menu">
-        <div id="btn-menu" class="">
-            <div id="btn-menu-top"></div>
-            <div id="btn-menu-middle"></div>
-            <div id="btn-menu-bottom"></div>
+<header class="header">
+    <nav class="nav">
+        <ul>
+            <li><img src="{% static 'homepage/images/logo.png' %}" alt="" id="logo"></li>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="text-us">
+        <div>
+            <img src="{% static 'homepage/images/phone.svg' %}" alt="">
+            <span>+996 555 013 331</span>
         </div>
-        <div class="container">
-            <div class="wraper">
-                <img class="logo" src="{% static 'homepage/img/gold-logo.png' %}">
-                <ul class="ul-menu">
-
-                    <a class="border-box border-box-1" href="#header">
-                        <li>ГЛАВНАЯ</li>
-                        <div class="border-animation"></div>
-                    </a>
-                    <a class="border-box border-box-2" href="#section2">
-                        <li>УСЛУГИ</li>
-                        <div class="border-animation"></div>
-                    </a>
-                    <a class="border-box border-box-3" href="#section-3">
-                        <li>О НАС</li>
-                        <div class="border-animation"></div>
-                    </a>
-                    <a class="border-box border-box-4" href="#section4">
-                        <li>ПОРТФОЛИО</li>
-                        <div class="border-animation"></div>
-                    </a>
-                    <a class="border-box border-box-6" href="#footer">
-                        <li>КОНТАКТЫ</li>
-                        <div class="border-animation"></div>
-                    </a>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <header id="header">
-        <div class="header-text">
-            <img src="{% static 'homepage/img/title.png' %}">
-            <h6>ПРОГРЕССИВНОЕ ПИАР АГЕНСТВО</h6>
-            <h1>CREATIVE<br>AGENCY</h1>
-            <p>MT Group пиар агентство — день изо дня<br class="p-text">распутываем задачи бизнеса</p>
-        </div>
-        <div class="header-animation">
-            <div class="header-animation-item-1 header-animation-item"><img src="{% static 'homepage/img/header-img-A.png' %}"></div>
-            <div class="header-animation-item-2 header-animation-item"><img src="{% static 'homepage/img/header-img-A-2.png' %}"></div>
-            <div class="header-animation-item-3 header-animation-item"><img src="{% static 'homepage/img/header-img-A-3.png' %}"></div>
-        </div>
-        <a href="#section2" class="down">
-            <p href="#">вниз</p>
-            <img src="{% static 'homepage/img/icon/down.svg' %}">
+        <a href="tel:+996507707774">
+            <button class="text-us-btn yellow-border">Позвонить</button>
         </a>
-    </header>
-
-
-    <section id="section2" class="section-2">
-        <div class="container">
-
-            <img class="yellow-block" src="{% static 'homepage/img/yellow-block.png' %}">
-
-            <div class="sitebar">
-
-                <div class="slider-hidden">
-
-                    <div class="slider">
-                        <div class="slider-center">
-                            <div class="slider__wrapper">
-                                <div class="slider__item">
-                                    <div class="slider-object">
-                                        <img src="{% static 'homepage/img/H1.png' %}">
-                                        <div class="slider-object-text">
-                                            <h1 class="main-text">AR РЕАЛНОСТЬ</h1>
-                                            <h2 class="main-text-h2">Технологичное решение в сфере рекламы </h2>
-                                            <p>Самый простой пример использования дополненной реальности — QR-коды. . С помощью них можно дополнить продукт той информацией, которая, например, не помещается на упаковку, можно рассказать историю компании посетителям
-                                                офиса, дополнить текст в журнале видео- и аудио-материалами. AR может погрузить потребителей в более интерактивный и подробный контент.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slider__item">
-                                    <div class="slider-object">
-                                        <img src="{% static 'homepage/img/H2.png' %}">
-                                        <div class="slider-object-text">
-                                            <h1 class="main-text">ДРОНВЕРТАЙЗИНГ</h1>
-                                            <h2 class="main-text-h2">Технологичное решение в сфере рекламы </h2>
-                                            <p>Дронвертайзинг — абсолютно новаторский и технологичный тип подачрекламы в Кыргызстане. Несколько рекламных площадок, на которые однозначно обратят внимание. Все предоставляемые платформы для рекламы создаются
-                                                только для одной цели-привлечь и захватить внимание максимального количества людей.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <a class="slider__control slider__control_left" href="#" role="button"></a>
-
-                        <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="section-3" class="section-3">
-        <div class="container">
-            <div class="about-us">
-                <h1 class="main-text">МЕТИМ ВСЕ «ВЫШЕ И ВЫШЕ»</h1>
-                <h2 class="main-text-h2">Наши достоинства</h2>
-
-                <div class="block-animation">
-                    <div class="inline-x">
-                        <div class="block-animation-item block-animation-item-1">
-                            <div class="text-x">
-                                <h6>КРЕАТИВ</h6>
-                                <p>Раскрываем границы и внедряем современные решения для обыденных задач.</p>
-                            </div>
-                        </div>
-                        <div class="block-animation-item block-animation-item-2">
-                            <div class="text-x">
-                                <h6>ОПЫТ</h6>
-                                <p>Мы признаем и решаем любую задачу с предельной степенью изобретательства!</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="inline-y">
-                        <div class="block-animation-item block-animation-item-3">
-                            <div class="text-y">
-                                <h6>БОЛЬШЕ<br> ЧЕМ НАДО</h6>
-                                <p>Делать больше чем должно! Выбирая нас Вы получите превыше чем ждете.</p>
-                            </div>
-                        </div>
-                        <div class="block-animation-item block-animation-item-4">
-                            <div class="text-y">
-                                <h6>ТОЧНОСТЬ</h6>
-                                <p>Тщательное исследование потребностей клиента позволяет нам индивидуально подойти к каждому проекту.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="section4">
-        <div class="container container-4">
-            <div id="viewport">
-
-                <div class="slider2" style="left: 0">
-                    <div class="slide">
-                        <div class="slid-window">
-                            <div class="slid-window-text">
-                                <p><span>AR<br>РЕАЛНОСТЬ<br><br></span> мощное средство вовлечения во взаимодействие с рекламой или напрямую с продуктом..
-                                </p>
-                            </div>
-                            <iframe class="slid-window-video" src="https://www.youtube.com/embed/5vFXIFcbEJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="slide">
-                        <div class="slid-window">
-                            <div class="slid-window-text">
-                                <p><span>ДРОНВЕРТАЙЗИНГ<br><br></span> Чтобы привлечь внимание потенциальных клиентов и увеличить поток заказов из нескольких бизнес-центров мы запустили первый подобный проект в Кыргызстане дронвертайзинг!
-                                </p>
-                            </div>
-                            <iframe class="slid-window-video" src="https://www.youtube.com/embed/fOKJT2Xa5bA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="us-slide">
-                <button class="prev slid-2-btn" id="prev"><img src="{% static 'homepage/img/Left Arrow.svg' %}"></button>
-                <button class="next slid-2-btn" id="next"><img src="{% static 'homepage/img/Right Arrow.svg' %}"></button>
-            </div>
-
-            <div id="viewSlider">
-                <div class="viewSlide"></div>
-                <div class="viewSlide"></div>
-            </div>
-
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="navbar">
-                <h1 class="main-text main-text-4">НАШИ КЛИЕНТЫ </h1>
-                <div class="nav-elements">
-                    <div class="nav-hidden">
-                        <img class="single-class activeImg" src="{% static 'homepage/img/1.png' %}">
-                        <img class="single-class" src="{% static 'homepage/img/2.png' %}">
-                        <img class="single-class" src="{% static 'homepage/img/3.png' %}">
-                        <img class="single-class" src="{% static 'homepage/img/4.png' %}">
-                        <img class="single-class" src="{% static 'homepage/img/5.png' %}">
-                    </div>
-                    <!-- 				<button class="nav-btn">
-					<img src="img/nav-next.svg">
-				</button> -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="hidden-for-yellow">
-        <div class="yellow-cub"></div>
     </div>
-    <footer id="footer">
-        <div class="container">
-            <div class="footer">
-                <form class="form-group">
-                    <h1 class="footer-h1">НАПИШИТЕ НАМ</h1>
-                    <input class="form-control" id="name" type="text" name="name" placeholder="Имя">
-                    <input class="form-control" id="Email" type="email" name="email" placeholder="Email">
-                    <input class="form-control" id="tel" type="tel" name="tel" placeholder="Телефон">
-                    <textarea class="form-control form-control-4" id="comment" type="text" name="comment" placeholder="Комментарии"></textarea>
-                    <button class="form-btn">ОТПРАВИТЬ</button>
-                    <div class="sm-elem">
-                        <a href="http://t.me/MTGroupkg"><img src="{% static 'homepage/img/icon/telegram.svg' %}"></a>
-                        <a href="#"><img src="{% static 'homepage/img/icon/fb.svg' %}"></a>
-                        <a href="#"><img src="{% static 'homepage/img/icon/wa.svg' %}"></a>
-                        <a href="https://www.instagram.com/mtgroup.kg/?igshid=a4h0h2vkhz4n"><img src="{% static 'homepage/img/icon/instagram.svg' %}"></a>
-                    </div>
-                </form>
-                <div class="contacts">
-                    <p><span>НАШИ<br>КОНТАКТЫ</span><br><br><br>
-                        <strong>
-						0555 013 331<br>0509 904 906<br>
-						<br>
-						<br>
-						<br>
-					</strong> АДРЕС: УЛ. ТОКТОГУЛА, 110<br> (БЦ «ПРЕМИУМ», 6 ЭТАЖ)<br> ПН-СБ: 9:00-19:00
-                    </p>
+</header>
+
+
+<section class="section-1">
+    <div>
+        <img class="mt-logo" src="{% static 'homepage/images/mt.png' %}" alt="">
+    </div>
+    <div class="mt-2">
+        <div class="mt-slogan">
+            <h3>MT GROUP</h3>
+            <div>
+                Инновация Ближе
+                <hr>
+            </div>
+        </div>
+        <h5>Распутываем задачи бизнеса</h5>
+        <div class="services-list">
+            <ul>
+                <li>AR</li>
+                <li>/</li>
+                <li>SEO</li>
+                <li>/</li>
+                <li>SMM</li>
+                <li>/</li>
+                <li>WEB-DEVELOPMENT</li>
+                <li>/</li>
+                <li>WEB-DESIGN</li>
+                <li>/</li>
+                <li>GRAPHIC DESIGN</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-2" id="services">
+    <div class="container">
+        <div class="section-2-header">
+            <h1>Наши <span class="span-yellow"> услуги</span></h1>
+            <p>Мы можем предоставить любые услуги для вашего бизнеса в сфере Digital</p>
+        </div>
+    </div>
+
+    <div class="services-element">
+        <img class="service-pic" src="{% static 'homepage/images/img-1.png' %}" alt="">
+        <h1 class="service__number">01</h1>
+        <div class="service-description">
+            <h1 class="service-description__header"><span class="span-yellow">Веб</span> разработка</h1>
+            <div class="service-description__text">
+                <p>Мы знаем, что каждый бизнес <br> индивидуален,не работаем<br> с шаблонными решениями. Мы создаем <br>
+                    уникальные сайты любого типа и <br> сложности: квизы, лендинги, интернет- <br> магазины,
+                    сайты-визитки, корпоративные <br> порталы,
+                    сайты для гос. учереждений.
+                </p>
+                <a href="#">ещё...</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-element">
+        <div class="service-description ml-200">
+            <h1 class="service-description__header">
+                <span class="span-yellow">AR</span> реальность
+            </h1>
+
+            <div class="service-description__text">
+                <p>Самый простой пример использования дополненной реальности — QR-коды. . С помощью них можно дополнить
+                    продукт той информацией, которая, например, не помещается на упаковку, можно рассказать историю
+                    компании посетителям офиса, дополнить
+                    текст в журнале видео- и аудио-материалами. AR может погрузить потребителей в более интерактивный и
+                    подробный контент
+                </p>
+                <a href="#">ещё...</a>
+            </div>
+        </div>
+        <h1 class="service__number">02</h1>
+        <img class="service-pic" src="{% static 'homepage/images/img-2.png' %}" alt="">
+    </div>
+
+    <div class="services-element">
+        <img class="service-pic" src="{% static 'homepage/images/img-3.png' %}" alt="">
+        <h1 class="service__number">03</h1>
+        <div class="service-description">
+            <h1 class="service-description__header">
+                <span class="span-yellow">Дрон</span>вертайзинг
+            </h1>
+
+            <div class="service-description__text">
+                <p>Дронвертайзинг — абсолютно новаторский и технологичный тип подачрекламы в Кыргызстане. Несколько
+                    рекламных площадок, на которые однозначно обратят внимание. Все предоставляемые платформы для
+                    рекламы создаются только для одной цели-привлечь
+                    и захватить внимание максимального количества людей.
+                </p>
+                <a href="#">ещё...</a>
+            </div>
+
+            <button class="text-usbtn yellow-border">Все услуги</button>
+        </div>
+    </div>
+
+    <div class="container" id="about">
+        <div class="section-2-headers">
+            <h1>Наши <span class="span-yellow"> достоинства</span></h1>
+            <p style="padding-bottom: 65px;">Мы знаем, что бизнес индивидуален, и не работаем с шаблонными решениями
+            </p>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="grid-container">
+            <div class="grid-item yellow-border">
+                <div class="grid-item__wrapper">
+                    <img src="{% static 'homepage/images/light-bulb.svg' %}" alt="">
+                    <h1>Креатив</h1>
+                    <p>Мы знаем, что каждый бизнес индивидуален, и не работаем с шаблонными решениями. Мы создаем
+                        уникальные сайты любого типа и сложности: квизы, лендинги, интернет-магазины, сайты-визитки,
+                        корпоративные порталы, сайты для гос. учереждений.</p>
                 </div>
-                <div class="parent-maps">
-                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.044638061516!2d74.60112807399445!3d42.871901972671225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7db02a58f3d%3A0x3ab37c5fef2f1384!2zMTEwINGD0LsuINCi0L7QutGC0L7Qs9GD0LvQsCwg0JHQuNGI0LrQtdC6!5e0!3m2!1sru!2skg!4v1604605480865!5m2!1sru!2skg"
-                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <div class="grid-item yellow-border">
+                <div class="grid-item__wrapper">
+                    <img src="{% static 'homepage/images/aim.svg' %}" alt="">
+                    <h1>Точность</h1>
+                    <p>Можно вкладывать бесконечно много денег в трафик, но без удобного и приятного сайта все это не
+                        имеет значения. Именно поэтому сайт ваш главный инструмент позиционирования. Очень важно
+                        понимать пользователя и упрощать его путь от
+                        первого знакомства до оставления заявки</p>
                 </div>
+            </div>
+            <div class="grid-item yellow-border">
+                <div class="grid-item__wrapper">
+                    <img src="{% static 'homepage/images/experience.svg' %}" alt="">
+                    <h1>Опыт</h1>
+                    <p>Мы предлагаем многоплановую реализацию вашего проекта профессиональными специалистами. Результат,
+                        который вы получите и будет вашим преимуществом перед конкурентами</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-4">
+    <div class="container">
+        <div class="navbar">
+            <h1 class="main-text main-text-4">НАШИ <span class="span-yellow ">КЛИЕНТЫ</span></h1>
+            <div class="nav-elements">
+                <div class="nav-hidden">
+                    <img class="single-class" src="{% static 'homepage/images/1.png' %}">
+                    <img class="single-class" src="{% static 'homepage/images/2.png' %}">
+                    <img class="single-class" src="{% static 'homepage/images/3.png' %}">
+                    <img class="single-class" src="{% static 'homepage/images/4.png' %}">
+                    <img class="single-class" src="{% static 'homepage/images/5.png' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-3">
+    <div class="container">
+        <div class="section-3-headers" id="contacts">
+            <h3><span class="span-yellow">Напишите</span> нам</h6>
+        </div>
+    </div>
+    <div class="container">
+        <form action="" class="form">
+            <div class="inputs-row">
+                <input type="text" placeholder="Имя" name="first_name">
+                <input type="text" placeholder="Фамилия" name="last_name">
+            </div>
+            <div class="inputs-row">
+                <input type="text" placeholder="Номер телефона" name="phone">
+                <input type="email" placeholder="Почта" name="email">
+            </div>
+            <div class="text-input">
+                <input type="text" placeholder="Дополнительно" name="comment">
+            </div>
+            <div class="submit-btn__container yellow-border">
+                <input type="button" value="Отправить" id="btnSubmit">
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<section class="section__footer">
+    <footer class="container">
+        <div class="footer__contacts">
+            Наши <span class="span-yellow">контакты</span>
+            <p><img src="{% static 'homepage/images/home-address.png' %}" alt="">Адрес: Ул.Токтогула 110 <br> (БЦ
+                «Премиум», 6 этаж)</p>
+            <p><img src="{% static 'homepage/images/time.png' %}" alt="">Пн-Сб: 9:00-19:00</p>
+        </div>
+        <div class="footer__services">
+            <span class="span-yellow">Услуги</span>
+            <div class="footer-services-elem">
+                <div>
+                    <p>AR реальность</p>
+                    <p>Веб разработка</p>
+                    <p>Дронвертайзинг</p>
+                    <p>SMM услуги</p>
+                    <p>SEO продвижение</p>
+                </div>
+                <div>
+                    <p>AR реальность</p>
+                    <p>Веб разработка</p>
+                    <p>Дронвертайзинг</p>
+                    <p>SMM услуги</p>
+                    <p>SEO продвижение</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer__socials">
+            Социальные <span class="span-yellow"></span>сети</span>
+            <div class="social-media">
+                <a href="https://www.facebook.com/MT-Group-KG-103944618185110/?view_public_for=103944618185110"><img
+                        src="{% static 'homepage/images/facebook.png' %}" alt=""></a>
+                <a href="#"><img src="{% static 'homepage/images/whatsapp.png' %}" alt=""></a>
+                <a href="https://t.me/MTGroupkg"><img src="{% static 'homepage/images/tele.png' %}" alt=""></a>
+                <a href="https://www.instagram.com/mtgroup.kg/"><img src="{% static 'homepage/images/insta.png' %}"
+                                                                     alt=""></a>
             </div>
         </div>
     </footer>
+</section>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/1370.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/970.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/620.css' %}">
-    <!-- <link rel="stylesheet" type="text/css" href="css/360.css"> -->
-    <script src="{% static 'homepage/js/script.js' %}"></script>
-    <script src="{% static 'homepage/js/fetch.js' %}"></script>
+<script src="{% static 'homepage/index.js' %}"></script>
 </body>
 
 </html>
