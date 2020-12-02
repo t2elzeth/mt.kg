@@ -41,7 +41,7 @@
 
         ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom-nft/new-year", "{% static 'img-tracking/config.json' %}", true)
             .then((nft) => {
-                nft.addVideo('arvideo', 360);
+                nft.addVideo('arvideo', 100);
             }).catch((error) => {
                 console.log(error);
             });
