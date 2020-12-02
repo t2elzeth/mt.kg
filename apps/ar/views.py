@@ -111,3 +111,8 @@ class Custom50SomView(View):
 class CustomMTLogoView(View):
     def get(self, request):
         return render(request, 'ar/mtlogo.html')
+
+
+class CustomQRProjectView(View):
+    def get(self, request):
+        return render(request, 'ar/qrproj.html')
