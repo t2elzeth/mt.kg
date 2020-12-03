@@ -1,6 +1,9 @@
+const submitBtn = document.querySelector('#submitBtn');
 const url = 'https://api.telegram.org/bot1397404758:AAEBfHXgaxWM0j-FGnsFsUxQjo4sMuyEz5Q/sendMessage'
 const form = document.querySelector('.form')
-const bntSubmit = document.querySelector('#btnSubmit')
+const adminChatIDs = [
+    399344900,
+]
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
@@ -13,20 +16,26 @@ async function postData(url = '', data = {}) {
     return await response.json();
 }
 
-bntSubmit.addEventListener('click', (e) => {
+submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    var formData = new FormData(form)
+    let formData = new FormData(form)
 
-    var text = `
+    let text = `
 Full name: ${formData.get('first_name') + formData.get('last_name')}
 Phone: ${formData.get('phone')}
 Email: ${formData.get('email')}
-Tel: ${formData.get('tel')}
 Comment: ${formData.get('comment')}
 `
+    adminChatIDs.forEach((chat_id) => {
+        postData(url, {chat_id, text: text}).then(() => {
+            let alert = window.confirm('Ваша форма была успешно отправлена')
 
-    postData(url, {
-        chat_id: 399344900,
-        text: text
+            if (alert) {
+                location.reload();
+            } else {
+                location.reload();
+            }
+        }).catch((err) => console.log(err))
     })
+
 })

@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>MT Group</title>
+    <link rel="shortcut icon" href="{% static 'homepage/css/images/favicon.ico' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage/css/style.css' %}">
 </head>
 
 <body>
 <header class="header">
     <nav class="nav">
         <ul>
-            <li><img src="{% static 'homepage/images/logo.png' %}" alt="" id="logo"></li>
+            <li><img src="{% static 'homepage/css/images/logo.png' %}" alt="" id="logo"></li>
             <li><a href="#">Главная</a></li>
             <li><a href="#services">Услуги</a></li>
             <li><a href="#about">О нас</a></li>
@@ -23,148 +24,143 @@
     </nav>
     <div class="text-us">
         <div>
-            <img src="{% static 'homepage/images/phone.svg' %}" alt="">
+            <img src="{% static 'homepage/css/images/phone.svg' %}" alt="">
             <span>+996 555 013 331</span>
         </div>
-        <a href="tel:+996555013331">
-            <button class="text-us-btn yellow-border">Позвонить</button>
+        <a href="tel:+996507707774" class="text-us-btn yellow-border">
+            <button>Позвонить</button>
         </a>
     </div>
 </header>
 
-
 <section class="section-1">
-    <div>
-        <img class="mt-logo" src="{% static 'homepage/images/mt.png' %}" alt="">
-    </div>
+    <img class="mt-logo" src="{% static 'homepage/css/images/mt.png' %}" alt="">
     <div class="mt-2">
         <div class="mt-slogan">
-            <h3>MT GROUP</h3>
+            <p>MT GROUP</p>
             <div>
-                Инновация Ближе
+                Инновация ближе
                 <hr>
             </div>
         </div>
-        <h5>Распутываем задачи бизнеса</h5>
+        <p>распутываем задачи бизнеса</p>
         <div class="services-list">
             <ul>
                 <li>AR</li>
-                <li>/</li>
+                <li class="span-yellow">/</li>
                 <li>SEO</li>
-                <li>/</li>
+                <li class="span-yellow">/</li>
                 <li>SMM</li>
-                <li>/</li>
+                <li class="span-yellow">/</li>
                 <li>WEB-DEVELOPMENT</li>
-                <li>/</li>
+                <li class="span-yellow">/</li>
                 <li>WEB-DESIGN</li>
-                <li>/</li>
+                <li class="span-yellow">/</li>
                 <li>GRAPHIC DESIGN</li>
             </ul>
         </div>
     </div>
 </section>
 
-
 <section class="section-2" id="services">
-    <div class="container">
-        <div class="section-2-header">
-            <h1>Наши <span class="span-yellow"> услуги</span></h1>
+    <div class="section-2__content">
+        <div class="section-2__header">
+            <h1>Наши <span class="span-yellow">услуги</span></h1>
             <p>Мы можем предоставить любые услуги для вашего бизнеса в сфере Digital</p>
         </div>
-    </div>
 
-    <div class="services-element">
-        <img class="service-pic" src="{% static 'homepage/images/img-1.png' %}" alt="">
-        <h1 class="service__number">01</h1>
-        <div class="service-description">
-            <h1 class="service-description__header"><span class="span-yellow">Веб</span> разработка</h1>
-            <div class="service-description__text">
-                <p>Мы знаем, что каждый бизнес <br> индивидуален,не работаем<br> с шаблонными решениями. Мы создаем <br>
-                    уникальные сайты любого типа и <br> сложности: квизы, лендинги, интернет- <br> магазины,
-                    сайты-визитки, корпоративные <br> порталы,
-                    сайты для гос. учереждений.
+        <div class="service">
+            <img class="service-photo" src="{% static 'homepage/css/images/service-1.png' %}" alt="">
+            <h1 class="service-number">01</h1>
+            <div class="service__text">
+
+                <p class="service__header">
+                    <span class="span-yellow">Веб</span> разработка
                 </p>
-                <a href="#">ещё...</a>
+                <p class="service__description">Мы знаем, что каждый бизнес индивидуален, и не работаем с шаблонными
+                    решениями. Мы создаем уникальные
+                    сайты любого типа и сложности: квизы, лендинги, интернет-магазины, сайты-визитки, корпоративные
+                    порталы, сайты для гос. учереждений.</p>
+
+                <a href="#">еще...</a>
+            </div>
+        </div>
+        <div class="service second-service">
+            <div class="service__text">
+
+                <p class="service__header">
+                    <span class="span-yellow">AR</span> реальность
+                </p>
+                <p class="service__description">Самый простой пример использования дополненной реальности — QR-коды. . С
+                    помощью них можно дополнить продукт той информацией, которая, например, не помещается на упаковку,
+                    можно рассказать историю компании посетителям офиса, дополнить текст в журнале видео- и
+                    аудио-материалами. AR может погрузить потребителей в более интерактивный и подробный контент.</p>
+
+                <a href="#">еще...</a>
+            </div>
+            <h1 class="service-number">02</h1>
+            <img class="service-photo" src="{% static 'homepage/css/images/service-2.png' %}" alt="">
+        </div>
+        <div class="service third-service">
+            <img class="service-photo" src="{% static 'homepage/css/images/service-1.png' %}" alt="">
+            <h1 class="service-number">03</h1>
+            <div class="service__text">
+                <p class="service__header">
+                    <span class="span-yellow">Дрон</span>вертайзинг
+                </p>
+                <p class="service__description">
+                    Дронвертайзинг — абсолютно новаторский и технологичный тип подачрекламы
+                    в Кыргызстане. Несколько рекламных площадок, на которые однозначно обратят внимание. Все
+                    предоставляемые платформы для рекламы создаются только для одной цели-привлечь и захватить внимание
+                    максимального количества людей.
+                </p>
+                <a href="#">еще...</a>
             </div>
         </div>
     </div>
 
-    <div class="services-element">
-        <div class="service-description ml-200">
-            <h1 class="service-description__header">
-                <span class="span-yellow">AR</span> реальность
-            </h1>
 
-            <div class="service-description__text">
-                <p>Самый простой пример использования дополненной реальности — QR-коды. . С помощью них можно дополнить
-                    продукт той информацией, которая, например, не помещается на упаковку, можно рассказать историю
-                    компании посетителям офиса, дополнить
-                    текст в журнале видео- и аудио-материалами. AR может погрузить потребителей в более интерактивный и
-                    подробный контент
-                </p>
-                <a href="#">ещё...</a>
-            </div>
-        </div>
-        <h1 class="service__number">02</h1>
-        <img class="service-pic" src="{% static 'homepage/images/img-2.png' %}" alt="">
-    </div>
+</section>
 
-    <div class="services-element">
-        <img class="service-pic" src="{% static 'homepage/images/img-3.png' %}" alt="">
-        <h1 class="service__number">03</h1>
-        <div class="service-description">
-            <h1 class="service-description__header">
-                <span class="span-yellow">Дрон</span>вертайзинг
-            </h1>
-
-            <div class="service-description__text">
-                <p>Дронвертайзинг — абсолютно новаторский и технологичный тип подачрекламы в Кыргызстане. Несколько
-                    рекламных площадок, на которые однозначно обратят внимание. Все предоставляемые платформы для
-                    рекламы создаются только для одной цели-привлечь
-                    и захватить внимание максимального количества людей.
-                </p>
-                <a href="#">ещё...</a>
-            </div>
-
-            <button class="text-usbtn yellow-border">Все услуги</button>
-        </div>
-    </div>
-
-    <div class="container" id="about">
-        <div class="section-2-headers">
+<section class="section-3" id="about">
+    <div class="container">
+        <div class="section-3-headers">
             <h1>Наши <span class="span-yellow"> достоинства</span></h1>
             <p style="padding-bottom: 65px;">Мы знаем, что бизнес индивидуален, и не работаем с шаблонными решениями
             </p>
         </div>
     </div>
-    <div class="container">
-
-        <div class="grid-container">
-            <div class="grid-item yellow-border">
-                <div class="grid-item__wrapper">
-                    <img src="{% static 'homepage/images/light-bulb.svg' %}" alt="">
-                    <h1>Креатив</h1>
-                    <p>Мы знаем, что каждый бизнес индивидуален, и не работаем с шаблонными решениями. Мы создаем
-                        уникальные сайты любого типа и сложности: квизы, лендинги, интернет-магазины, сайты-визитки,
-                        корпоративные порталы, сайты для гос. учереждений.</p>
+    <div class="section-3__content">
+        <div class="container">
+            <div class="grid-container">
+                <div class="grid-item yellow-border">
+                    <div class="grid-item__wrapper">
+                        <img src="{% static 'homepage/css/images/light-bulb.svg' %}" alt="">
+                        <h1>Креатив</h1>
+                        <p>Мы знаем, что каждый бизнес индивидуален, и не работаем с шаблонными решениями. Мы создаем
+                            уникальные сайты любого типа и сложности: квизы, лендинги, интернет-магазины, сайты-визитки,
+                            корпоративные порталы, сайты для гос. учереждений.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="grid-item yellow-border">
-                <div class="grid-item__wrapper">
-                    <img src="{% static 'homepage/images/aim.svg' %}" alt="">
-                    <h1>Точность</h1>
-                    <p>Можно вкладывать бесконечно много денег в трафик, но без удобного и приятного сайта все это не
-                        имеет значения. Именно поэтому сайт ваш главный инструмент позиционирования. Очень важно
-                        понимать пользователя и упрощать его путь от
-                        первого знакомства до оставления заявки</p>
+                <div class="grid-item yellow-border">
+                    <div class="grid-item__wrapper">
+                        <img src="{% static 'homepage/css/images/aim.svg' %}" alt="">
+                        <h1>Точность</h1>
+                        <p>Можно вкладывать бесконечно много денег в трафик, но без удобного и приятного сайта все это
+                            не
+                            имеет значения. Именно поэтому сайт ваш главный инструмент позиционирования. Очень важно
+                            понимать пользователя и упрощать его путь от
+                            первого знакомства до оставления заявки</p>
+                    </div>
                 </div>
-            </div>
-            <div class="grid-item yellow-border">
-                <div class="grid-item__wrapper">
-                    <img src="{% static 'homepage/images/experience.svg' %}" alt="">
-                    <h1>Опыт</h1>
-                    <p>Мы предлагаем многоплановую реализацию вашего проекта профессиональными специалистами. Результат,
-                        который вы получите и будет вашим преимуществом перед конкурентами</p>
+                <div class="grid-item yellow-border">
+                    <div class="grid-item__wrapper">
+                        <img src="{% static 'homepage/css/images/experience.svg' %}" alt="">
+                        <h1>Опыт</h1>
+                        <p>Мы предлагаем многоплановую реализацию вашего проекта профессиональными специалистами.
+                            Результат,
+                            который вы получите и будет вашим преимуществом перед конкурентами</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,93 +169,87 @@
 
 <section class="section-4">
     <div class="container">
-        <div class="navbar">
+        <div class="section-4__content">
             <h1 class="main-text main-text-4">НАШИ <span class="span-yellow ">КЛИЕНТЫ</span></h1>
-            <div class="nav-elements">
-                <div class="nav-hidden">
-                    <img class="single-class" src="{% static 'homepage/images/1.png' %}">
-                    <img class="single-class" src="{% static 'homepage/images/2.png' %}">
-                    <img class="single-class" src="{% static 'homepage/images/3.png' %}">
-                    <img class="single-class" src="{% static 'homepage/images/4.png' %}">
-                    <img class="single-class" src="{% static 'homepage/images/5.png' %}">
+            <div class="client-logos">
+                <img src="{% static 'homepage/css/images/left-arrow.svg' %}" alt="">
+                <img class="single-class" src="{% static 'homepage/css/images/1.png' %}">
+                <img class="single-class" src="{% static 'homepage/css/images/2.png' %}">
+                <img class="single-class" src="{% static 'homepage/css/images/3.png' %}">
+                <img class="single-class" src="{% static 'homepage/css/images/4.png' %}">
+                <img class="single-class" src="{% static 'homepage/css/images/5.png' %}">
+                <img src="{% static 'homepage/css/images/right-arrow.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-5" id="contacts">
+    <div class="section-5__content">
+        <h3><span class="span-yellow">Напишите</span> нам</h3>
+        <div class="form__wrapper">
+            <form action="" class="form">
+                <div class="inputs-row">
+                    <input type="text" placeholder="Имя" name="first_name">
+                    <input type="text" placeholder="Фамилия" name="last_name">
                 </div>
-            </div>
+                <div class="inputs-row">
+                    <input type="text" placeholder="Номер телефона" name="phone">
+                    <input type="email" placeholder="Почта" name="email">
+                </div>
+                <div class="text-input">
+                    <input type="text" placeholder="Дополнительно" name="comment">
+                </div>
+                <div class="submit-btn__container yellow-border">
+                    <input type="button" value="Отправить" id="submitBtn">
+                </div>
+            </form>
         </div>
     </div>
 </section>
-
-
-<section class="section-3">
-    <div class="container">
-        <div class="section-3-headers" id="contacts">
-            <h3><span class="span-yellow">Напишите</span> нам</h6>
-        </div>
-    </div>
-    <div class="container">
-        <form action="" class="form">
-            <div class="inputs-row">
-                <input type="text" placeholder="Имя" name="first_name">
-                <input type="text" placeholder="Фамилия" name="last_name">
-            </div>
-            <div class="inputs-row">
-                <input type="text" placeholder="Номер телефона" name="phone">
-                <input type="email" placeholder="Почта" name="email">
-            </div>
-            <div class="text-input">
-                <input type="text" placeholder="Дополнительно" name="comment">
-            </div>
-            <div class="submit-btn__container yellow-border">
-                <input type="button" value="Отправить" id="btnSubmit">
-            </div>
-        </form>
-    </div>
-</section>
-
 
 <section class="section__footer">
     <footer class="container">
-        <div class="footer__contacts">
-            Наши <span class="span-yellow">контакты</span>
-            <p><img src="{% static 'homepage/images/home-address.png' %}" alt="">Адрес: Ул.Токтогула 110 <br> (БЦ
-                «Премиум», 6 этаж)</p>
-            <p><img src="{% static 'homepage/images/time.png' %}" alt="">Пн-Сб: 9:00-19:00</p>
-        </div>
-        <div class="footer__services">
-            <span class="span-yellow">Услуги</span>
-            <div class="footer-services-elem">
-                <div>
-                    <p>AR реальность</p>
-                    <p>Веб разработка</p>
-                    <p>Дронвертайзинг</p>
-                    <p>SMM услуги</p>
-                    <p>SEO продвижение</p>
-                </div>
-                <div>
-                    <p>AR реальность</p>
-                    <p>Веб разработка</p>
-                    <p>Дронвертайзинг</p>
-                    <p>SMM услуги</p>
-                    <p>SEO продвижение</p>
+        <div class="section__footer__content">
+            <div class="footer__contacts">
+                Наши <span class="span-yellow">контакты</span>
+                <p><img src="{% static 'homepage/css/images/home-address.png' %}" alt="">Адрес: Ул.Токтогула 110 <br> (БЦ «Премиум», 6 этаж)</p>
+                <p><img src="{% static 'homepage/css/images/time.png' %}" alt="">Пн-Сб: 9:00-19:00</p>
+            </div>
+            <div class="footer__services">
+                <span class="span-yellow">Услуги</span>
+                <div class="footer-services-elem">
+                    <div>
+                        <p>AR реальность</p>
+                        <p>Веб разработка</p>
+                        <p>Дронвертайзинг</p>
+                        <p>SMM услуги</p>
+                        <p>SEO продвижение</p>
+                    </div>
+                    <div>
+                        <p>Веб дизайн</p>
+                        <p>Графический дизайн</p>
+                        <p>Рост личного бренда</p>
+                        <p>Продвижение бизнеса</p>
+                        <p>Инста маски</p>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="footer__socials">
-            Социальные <span class="span-yellow"></span>сети</span>
-            <div class="social-media">
-                <a href="https://www.facebook.com/MT-Group-KG-103944618185110/?view_public_for=103944618185110"><img
-                        src="{% static 'homepage/images/facebook.png' %}" alt=""></a>
-                <a href="#"><img src="{% static 'homepage/images/whatsapp.png' %}" alt=""></a>
-                <a href="https://t.me/MTGroupkg"><img src="{% static 'homepage/images/tele.png' %}" alt=""></a>
-                <a href="https://www.instagram.com/mtgroup.kg/"><img src="{% static 'homepage/images/insta.png' %}"
-                                                                     alt=""></a>
+            <div class="footer__socials">
+                Социальные <span class="span-yellow"></span>сети</span>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/MT-Group-KG-103944618185110/?view_public_for=103944618185110"><img
+                            src="{% static 'homepage/css/images/facebook.png' %}" alt=""></a>
+                    <a href=""><img src="{% static 'homepage/css/images/whatsapp.png' %}" alt=""></a>
+                    <a href="https://t.me/MTGroupkg"><img src="{% static 'homepage/css/images/tele.png' %}" alt=""></a>
+                    <a href="https://www.instagram.com/mtgroup.kg/"><img src="{% static 'homepage/css/images/insta.png' %}" alt=""></a>
+                </div>
             </div>
         </div>
     </footer>
 </section>
 
-<script src="{% static 'homepage/index.js' %}"></script>
+<script src="{% static 'homepage/js/index.js' %}"></script>
 </body>
 
 </html>
