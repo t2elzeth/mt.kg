@@ -1,44 +1,40 @@
 <template>
   <div class="main" id="contacts">
-    <div class="content">
-      <h3><span class="text-yellow">Напишите</span> нам</h3>
-      <div class="form__wrapper">
-        <form class="form" @submit.prevent="submit">
-          <div class="inputs-row">
-            <FormField
-                :v$field="v$.first_name"
-                placeholder="Имя"
-                form-field="first_name"
-            />
-            <FormField
-                :v$field="v$.last_name"
-                placeholder="Фамилия"
-                form-field="last_name"
-            />
-          </div>
-          <div class="inputs-row">
-            <FormField
-                :v$field="v$.phone"
-                placeholder="Номер телефона"
-                form-field="phone"
-            />
-            <FormField
-                :v$field="v$.email"
-                placeholder="Почта"
-                form-field="email"
-            />
-          </div>
+    <h3><span class="text-yellow">Напишите</span> нам</h3>
+    <div class="form__wrapper">
+      <form class="form" @submit.prevent="submit">
+        <div class="inputs-row">
           <FormField
-              :v$field="v$.comment"
-              placeholder="Дополнительно"
-              form-field="comment"
-              field-type="textarea"
+              :v$field="v$.first_name"
+              placeholder="Имя"
+              form-field="first_name"
           />
-          <div class="submit-btn__container yellow-border">
-            <button id="submitBtn">Отправить</button>
-          </div>
-        </form>
-      </div>
+          <FormField
+              :v$field="v$.last_name"
+              placeholder="Фамилия"
+              form-field="last_name"
+          />
+        </div>
+        <div class="inputs-row">
+          <FormField
+              :v$field="v$.phone"
+              placeholder="Номер телефона"
+              form-field="phone"
+          />
+          <FormField
+              :v$field="v$.email"
+              placeholder="Почта"
+              form-field="email"
+          />
+        </div>
+        <FormField
+            :v$field="v$.comment"
+            placeholder="Дополнительно"
+            form-field="comment"
+            field-type="textarea"
+        />
+        <button class="submit-btn" id="submitBtn">Отправить</button>
+      </form>
     </div>
   </div>
 </template>
@@ -102,46 +98,40 @@ Comment: ${contactFormData.comment.value}
   height: 780px;
   color: white;
   text-align: center;
+  padding-top: 100px;
 
-  .content {
-    padding-top: 100px;
-    height: 505px;
+  .form__wrapper {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 
-    .form__wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
+    .form {
+      width: 875px;
+      display: grid;
+      grid-template-rows: repeat(2, 50px) 200px 50px;
+      grid-column-gap: 30px;
+      grid-row-gap: 50px;
+      color: white;
 
-      .form {
-        width: 875px;
-        display: grid;
-        grid-template-rows: repeat(2, 50px) 200px 50px;
-        grid-column-gap: 30px;
-        grid-row-gap: 50px;
-        color: white;
-
-        .inputs-row {
-          display: flex;
-          width: 100%;
-          justify-content: space-between;
-        }
+      .inputs-row {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
       }
+    }
 
-      .submit-btn__container {
-        #submitBtn {
-          @include input-default;
+    .submit-btn {
+      @include input-default;
 
-          width: 100%;
-          height: 100%;
-          color: white;
+      width: 100%;
+      height: 100%;
+      color: white;
+      border: 1px solid #E3C819;
 
-          &:focus {
-            outline: none;
-            background: rgba(59, 59, 59, 0.4);
-          }
-        }
+      &:focus {
+        outline: none;
+        background: rgba(59, 59, 59, 0.4);
       }
     }
   }

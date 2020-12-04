@@ -1,22 +1,18 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <ul>
-        <li><img src="../../assets/homepage/images/logo.png" alt="" id="logo"></li>
-        <li><a href="#">Главная</a></li>
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
+      <img src="../../assets/homepage/images/logo.png" alt="" id="logo">
+      <a href="#">Главная</a>
+      <a href="#services">Услуги</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
     </nav>
-    <div class="text-us">
-      <div class="phone-number">
-        <img src="../../assets/homepage/images/phone.svg" alt="">
-        <span>+996 555 013 331</span>
-      </div>
-      <a href="tel:+996507707774" class="text-us-btn yellow-border">
-        <button>Позвонить</button>
-      </a>
+    <div class="contact-us">
+        <span class="phone-number">
+          <img src="../../assets/homepage/images/phone.svg" alt="">
+          +996 555 013 331
+        </span>
+      <a href="tel:+996507707774" class="yellow-border">Позвонить</a>
     </div>
   </header>
 </template>
@@ -30,10 +26,6 @@ export default {
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
 @import "../../assets/common";
-
-#logo {
-  margin-top: 30%;
-}
 
 .header {
   position: sticky;
@@ -49,21 +41,23 @@ export default {
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
     width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      list-style: none;
+    #logo {
+      position: relative;
+      top: 5px;
+    }
 
-      a {
-        text-decoration: none;
-        color: white;
-      }
+    a {
+      text-decoration: none;
+      color: white;
     }
   }
 
-  .text-us {
+  .contact-us {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,36 +66,21 @@ export default {
     .phone-number {
       color: #FFE500;
       width: 100%;
-
-
     }
 
-    .text-us-btn {
-        font-family: 'Raleway', sans-serif;
-        font-size: 13px;
-        margin-left: 2rem;
-        border-radius: 2px;
-        width: 100%;
-        padding: 0.35rem 0;
+    a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      width: 340px;
 
-        > button {
-          width: 100%;
-          background: #272727;
-          color: white;
-          border: none;
-        }
+      text-align: center;
+      text-decoration: none;
+      border-radius: 2px;
 
-        button:focus {
-          outline: none;
-        }
-
-        button:hover {
-          cursor: pointer;
-        }
-
-
-      }
-
+      padding: 0.35rem 0;
+      background: #272727;
+      color: white;
+    }
   }
 }
 </style>

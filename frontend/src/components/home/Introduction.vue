@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img class="mt-logo" src="../../assets/homepage/images/mt.png" alt="">
-    <div class="mt-2">
+    <div class="content">
       <div class="mt-slogan">
         <p class="text-yellow">MT GROUP</p>
         <div class="innovations-close text-yellow">
@@ -9,22 +9,20 @@
           <hr>
         </div>
       </div>
-      <p >распутываем задачи бизнеса</p>
-      <div class="services-list">
-        <ul>
-          <li>AR</li>
-          <li class="text-yellow">/</li>
-          <li>SEO</li>
-          <li class="text-yellow">/</li>
-          <li>SMM</li>
-          <li class="text-yellow">/</li>
-          <li>WEB-DEVELOPMENT</li>
-          <li class="text-yellow">/</li>
-          <li>WEB-DESIGN</li>
-          <li class="text-yellow">/</li>
-          <li>GRAPHIC DESIGN</li>
-        </ul>
-      </div>
+      <p>распутываем задачи бизнеса</p>
+      <ul class="services-list">
+        <li>AR</li>
+        <li class="text-yellow">/</li>
+        <li>SEO</li>
+        <li class="text-yellow">/</li>
+        <li>SMM</li>
+        <li class="text-yellow">/</li>
+        <li>WEB-DEVELOPMENT</li>
+        <li class="text-yellow">/</li>
+        <li>WEB-DESIGN</li>
+        <li class="text-yellow">/</li>
+        <li>GRAPHIC DESIGN</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -53,30 +51,25 @@ export default {
     height: 350px;
   }
 
-  .mt-2 {
+  .content {
     display: block;
     color: white;
     font-size: 50px;
     margin-left: -50px;
 
-    hr {
-      width: 423px;
-    }
-
-    p {
-      font-size: 50px;
-      margin-top: 0;
-    }
-
     .mt-slogan {
       display: flex;
       align-items: center;
-      margin-top: -5%;
+      margin-top: -10%;
       height: 50px;
 
       .innovations-close {
         font-size: 22px;
-        padding-left: 30px;
+        margin-left: 30px;
+
+        hr {
+          width: 423px;
+        }
       }
     }
 
@@ -84,13 +77,10 @@ export default {
       margin-top: 25px;
       width: 85%;
 
-      ul {
-        display: flex;
-        list-style-type: none;
-        padding-inline-start: 0;
-        font-size: 13px;
-        justify-content: space-between;
-      }
+      display: flex;
+      list-style-type: none;
+      font-size: 13px;
+      justify-content: space-between;
     }
   }
 }
