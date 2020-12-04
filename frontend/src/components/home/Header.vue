@@ -29,6 +29,7 @@ export default {
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+@import "../../assets/common";
 
 #logo {
   margin-top: 30%;

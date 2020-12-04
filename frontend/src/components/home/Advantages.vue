@@ -2,7 +2,7 @@
   <div class="main" id="about">
     <div class="container">
       <div class="section-3-headers">
-        <h1>Наши <span class="span-yellow"> достоинства</span></h1>
+        <h1>Наши <span class="text-yellow"> достоинства</span></h1>
         <p style="padding-bottom: 65px;">Мы знаем, что бизнес индивидуален, и не работаем с шаблонными решениями
         </p>
       </div>
@@ -51,7 +51,9 @@ name: "Advantages"
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../../assets/common";
+
 .main {
   background: #272727;
   color: white;

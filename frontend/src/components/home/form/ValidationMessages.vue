@@ -1,8 +1,8 @@
 <template>
   <div v-for="validator in validators" :key="validator.name">
     <small
-      class="invalid-feedback"
-      v-if="v$.$dirty && v$[validator.name].$invalid"
+        class="invalid-feedback"
+        v-if="v$.$dirty && v$[validator.name].$invalid"
     >
       {{ validator.message }}
     </small>
@@ -33,12 +33,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../../../assets/vars";
+
 .invalid-feedback {
   color: red;
 }
 
 .valid-feedback {
-  color: #00c700;
+  color: $yellow;
 }
 </style>

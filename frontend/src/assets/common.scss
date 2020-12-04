@@ -1,5 +1,7 @@
-.span-yellow {
-    color: #FFE500;
+@import "vars";
+
+.text-yellow {
+    color: $yellow;
 }
 
 .yellow-border {
@@ -11,3 +13,6 @@
   display: flex;
   justify-content: center;
 }
+
+
+

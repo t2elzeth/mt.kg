@@ -1,7 +1,7 @@
 <template>
   <div class="main" id="contacts">
     <div class="content">
-      <h3><span class="span-yellow">Напишите</span> нам</h3>
+      <h3><span class="text-yellow">Напишите</span> нам</h3>
       <div class="form__wrapper">
         <form class="form" @submit.prevent="submit">
           <div class="inputs-row">
@@ -28,14 +28,12 @@
                 form-field="email"
             />
           </div>
-          <div class="text-input">
-            <FormField
-                :v$field="v$.comment"
-                placeholder="Дополнительно"
-                form-field="comment"
-                field-type="textarea"
-            />
-          </div>
+          <FormField
+              :v$field="v$.comment"
+              placeholder="Дополнительно"
+              form-field="comment"
+              field-type="textarea"
+          />
           <div class="submit-btn__container yellow-border">
             <button id="submitBtn">Отправить</button>
           </div>
@@ -51,6 +49,7 @@ import FormField from "@/components/home/form/FormField";
 import {success, error} from "@/utils/notifications";
 import {formData} from "@/utils/forms";
 import {rules} from "@/utils/validators";
+import {sendMessage} from "@/utils/tgBotAPI";
 
 import {useVuelidate} from '@vuelidate/core'
 
@@ -61,9 +60,7 @@ export default {
   },
   setup() {
     const contactFormData = formData.contactUs;
-
     const formDataRules = rules.contactUs();
-
     const v$ = useVuelidate(formDataRules, contactFormData);
 
     function submit() {
@@ -74,6 +71,14 @@ export default {
         return;
       }
 
+      const text = `
+Full name: ${contactFormData.first_name.value} ${contactFormData.last_name.value}
+Email: ${contactFormData.email.value}
+Phone: ${contactFormData.phone.value}
+Comment: ${contactFormData.comment.value}
+`
+
+      sendMessage(text)
       success('Ваша форма успешно отправлена!', 'Успешно!')
           .finally(() => location.reload());
     }
@@ -87,15 +92,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.input-default {
-  background: rgba(112, 112, 112, 0.4);
-  border: none;
-  border-radius: 3px;
-  color: white;
-  font-size: 16px;
-
-  padding-left: 10px;
-}
+@import "../../assets/common";
+@import "../../assets/mixins";
 
 .main {
   font-family: 'Exo 2', sans-serif;
@@ -103,7 +101,6 @@ export default {
   background-size: cover;
   height: 780px;
   color: white;
-
   text-align: center;
 
   .content {
@@ -115,7 +112,6 @@ export default {
       width: 100%;
       display: flex;
       justify-content: center;
-
       margin-top: 50px;
 
       .form {
@@ -135,7 +131,7 @@ export default {
 
       .submit-btn__container {
         #submitBtn {
-          @extend .input-default;
+          @include input-default;
 
           width: 100%;
           height: 100%;
@@ -146,7 +142,6 @@ export default {
             background: rgba(59, 59, 59, 0.4);
           }
         }
-
       }
     }
   }

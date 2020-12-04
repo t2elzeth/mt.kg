@@ -1,0 +1,21 @@
+@import "vars";
+
+@mixin feedback {
+  &.valid {
+    background: $yellow;
+    color: black;
+  }
+
+  &.invalid {
+    background: #bf0000;
+  }
+}
+
+@mixin input-default {
+  background: rgba(112, 112, 112, 0.4);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  padding-left: 10px;
+}

@@ -1,20 +1,6 @@
 const submitBtn = document.querySelector('#submitBtn');
-const url = 'https://api.telegram.org/bot1397404758:AAEBfHXgaxWM0j-FGnsFsUxQjo4sMuyEz5Q/sendMessage'
 const form = document.querySelector('.form')
-const adminChatIDs = [
-    399344900,
-]
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    return await response.json();
-}
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault()

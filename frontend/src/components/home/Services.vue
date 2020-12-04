@@ -2,7 +2,7 @@
   <div class="main" id="services">
     <div class="section-2__content">
       <div class="section-2__header">
-        <h1>Наши <span class="span-yellow">услуги</span></h1>
+        <h1>Наши <span class="text-yellow">услуги</span></h1>
         <p>Мы можем предоставить любые услуги для вашего бизнеса в сфере Digital</p>
       </div>
 
@@ -12,7 +12,7 @@
         <div class="service__text">
 
           <p class="service__header">
-            <span class="span-yellow">Веб</span> разработка
+            <span class="text-yellow">Веб</span> разработка
           </p>
           <p class="service__description">Мы знаем, что каждый бизнес индивидуален, и не работаем с шаблонными
             решениями. Мы создаем уникальные
@@ -26,7 +26,7 @@
         <div class="service__text">
 
           <p class="service__header">
-            <span class="span-yellow">AR</span> реальность
+            <span class="text-yellow">AR</span> реальность
           </p>
           <p class="service__description">Самый простой пример использования дополненной реальности — QR-коды. . С
             помощью них можно дополнить продукт той информацией, которая, например, не помещается на упаковку,
@@ -43,7 +43,7 @@
         <h1 class="service-number">03</h1>
         <div class="service__text">
           <p class="service__header">
-            <span class="span-yellow">Дрон</span>вертайзинг
+            <span class="text-yellow">Дрон</span>вертайзинг
           </p>
           <p class="service__description">
             Дронвертайзинг — абсолютно новаторский и технологичный тип подачрекламы
@@ -66,7 +66,9 @@ name: "Services"
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../../assets/common";
+
 .main {
   font-family: 'Exo 2', sans-serif;
   background: #272727;

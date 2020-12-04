@@ -32,28 +32,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.input-default {
-  background: rgba(112, 112, 112, 0.4);
-  border: none;
-  border-radius: 3px;
-  color: white;
-  font-size: 16px;
-
-  padding-left: 10px;
-}
+@import "../../../assets/vars";
+@import "../../../assets/mixins";
 
 textarea {
-  @extend .input-default;
+  @include input-default;
+
   width: 100%;
   height: 100%;
 
-  &.valid {
-    background: #00e000;
-  }
-
-  &.invalid {
-    background: #bf0000;
-
-  }
+  @include feedback
 }
 </style>

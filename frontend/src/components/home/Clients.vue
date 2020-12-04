@@ -1,7 +1,7 @@
 <template>
   <section class="main">
     <div class="content">
-      <h1 class="main-text">НАШИ <span class="span-yellow ">КЛИЕНТЫ</span></h1>
+      <h1 class="main-text">НАШИ <span class="text-yellow">КЛИЕНТЫ</span></h1>
       <div class="client-logos">
         <img src="../../assets/homepage/images/left-arrow.svg" alt="">
         <img src="../../assets/homepage/images/1.png">
@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/common";
+
 .main {
   font-family: 'Exo 2', sans-serif;
 

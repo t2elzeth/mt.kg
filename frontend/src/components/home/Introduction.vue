@@ -3,25 +3,25 @@
     <img class="mt-logo" src="../../assets/homepage/images/mt.png" alt="">
     <div class="mt-2">
       <div class="mt-slogan">
-        <p>MT GROUP</p>
-        <div class="innovations-close">
+        <p class="text-yellow">MT GROUP</p>
+        <div class="innovations-close text-yellow">
           Инновация ближе
           <hr>
         </div>
       </div>
-      <p>распутываем задачи бизнеса</p>
+      <p >распутываем задачи бизнеса</p>
       <div class="services-list">
         <ul>
           <li>AR</li>
-          <li class="span-yellow">/</li>
+          <li class="text-yellow">/</li>
           <li>SEO</li>
-          <li class="span-yellow">/</li>
+          <li class="text-yellow">/</li>
           <li>SMM</li>
-          <li class="span-yellow">/</li>
+          <li class="text-yellow">/</li>
           <li>WEB-DEVELOPMENT</li>
-          <li class="span-yellow">/</li>
+          <li class="text-yellow">/</li>
           <li>WEB-DESIGN</li>
-          <li class="span-yellow">/</li>
+          <li class="text-yellow">/</li>
           <li>GRAPHIC DESIGN</li>
         </ul>
       </div>
@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/common";
+
 .main {
   font-family: 'Exo 2', sans-serif;
   display: flex;
@@ -69,7 +71,6 @@ export default {
     .mt-slogan {
       display: flex;
       align-items: center;
-      color: #FFE500;
       margin-top: -5%;
       height: 50px;
 
