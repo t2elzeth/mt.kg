@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import FormField from "@/components/home/form/FormField";
+import FormField from "@/components/form/FormField";
 
 import {success, error} from "@/utils/notifications";
 import {formData} from "@/utils/forms";

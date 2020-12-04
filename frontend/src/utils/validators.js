@@ -11,6 +11,8 @@ export const isAlpha = (value) => {
 export const constants = {
     minLength: {
         phone: 8,
+        username: 5,
+        password: 8,
     },
     maxLength: {
         comment: 1200
@@ -45,7 +47,22 @@ export const rules = {
             phone: this.phone,
             comment: this.comment,
         }
-    }
+    },
+
+    username: {
+        required,
+        minLength: minLength(constants.minLength.username)
+    },
+    password: {
+        required,
+        minLength: minLength(constants.minLength.password)
+    },
+    login: function () {
+        return {
+            username: this.username,
+            password: this.password
+        }
+    },
 }
 
 const getValidator = {
@@ -106,6 +123,14 @@ export const messages = {
     ],
     comment: [
         getValidator.maxLength('comment'),
+    ],
+    username: [
+        getValidator.required(),
+        getValidator.minLength('username')
+    ],
+    password: [
+        getValidator.required(),
+        getValidator.minLength('password')
     ]
 }
 

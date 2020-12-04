@@ -14,6 +14,10 @@ export const formData = {
         phone: ref(""),
         email: ref(""),
         comment: ref("")
+    },
+    login: {
+        username: ref(""),
+        password: ref("")
     }
 };
 

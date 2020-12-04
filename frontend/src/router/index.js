@@ -7,6 +7,16 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/ar/add',
+    name: 'AddAr',
+    component: () => import("@/views/AddArView")
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import("@/views/auth/Login")
+  }
 ]
 
 const router = createRouter({

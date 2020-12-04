@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/vars";
+@import "../../assets/vars";
 
 .invalid-feedback {
   color: red;

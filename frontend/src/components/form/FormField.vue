@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import InputField from "@/components/home/form/InputField";
-import TextAreaField from "@/components/home/form/TextAreaField";
-import ValidationMessages from "@/components/home/form/ValidationMessages";
+import InputField from "@/components/form/InputField";
+import TextAreaField from "@/components/form/TextAreaField";
+import ValidationMessages from "@/components/form/ValidationMessages";
 
 export default {
   name: "FormField",
