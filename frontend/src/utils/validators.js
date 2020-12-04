@@ -1,4 +1,12 @@
-import {required, minLength, email, maxLength, alpha} from "@vuelidate/validators/dist/raw.esm";
+import {required, minLength, email, maxLength} from "@vuelidate/validators/dist/raw.esm";
+
+export const isAlpha = (value) => {
+    try {
+        return value.match(/\p{L}/gu).length === value.length
+    } catch (err) {
+        return false
+    }
+}
 
 export const constants = {
     minLength: {
@@ -16,11 +24,11 @@ export const rules = {
     },
     first_name: {
         required,
-        alpha
+        isAlpha
     },
     last_name: {
         required,
-        alpha
+        isAlpha
     },
     phone: {
         required,
@@ -67,7 +75,7 @@ const getValidator = {
     },
     alpha: function () {
         return {
-            name: "alpha",
+            name: "isAlpha",
             message: `Это поле должно содержать только буквы`
         };
     },
@@ -100,3 +108,4 @@ export const messages = {
         getValidator.maxLength('comment'),
     ]
 }
+

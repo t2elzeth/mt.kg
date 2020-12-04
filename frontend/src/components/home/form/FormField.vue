@@ -10,6 +10,7 @@
     :type="inputType"
     :placeholder="placeholder"
     :v$field="v$"
+    :id="formField"
     v-else-if="fieldType === 'textarea'"
     />
     <ValidationMessages :v$field="v$" :field-name="formField" />

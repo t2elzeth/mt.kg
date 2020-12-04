@@ -20,7 +20,6 @@ export default {
     },
     placeholder: String,
     v$field: Object,
-    id: String
   },
   setup(props) {
     return {

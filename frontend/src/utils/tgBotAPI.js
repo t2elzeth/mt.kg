@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const tgBotUrl = 'https://api.telegram.org/bot1397404758:AAEBfHXgaxWM0j-FGnsFsUxQjo4sMuyEz5Q/sendMessage'
+export const tgBotUrl = 'https://api.telegram.org/bot1328468800:AAEa-IJt7NzCLfIKSBBJ-oohQ3jPV5Hmc4o/sendMessage'
 export const adminChatIDs = [
     399344900,
 ]

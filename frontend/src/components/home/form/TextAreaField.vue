@@ -1,7 +1,6 @@
 <template>
   <textarea
       class="input-field"
-      :type="type"
       :placeholder="placeholder"
       v-model="v$.$model"
       :class="getInputFieldValidationClasses(v$)"
