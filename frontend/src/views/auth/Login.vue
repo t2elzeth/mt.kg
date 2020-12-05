@@ -2,15 +2,15 @@
   <div class="main">
     <form @submit.prevent="login" class="form">
       <FormField
-        :v$field="v$.username"
-        placeholder="Имя пользователя"
-        form-field="username"
+          :v$field="v$.username"
+          placeholder="Имя пользователя"
+          form-field="username"
       />
 
       <FormField
-        :v$field="v$.password"
-        placeholder="Пароль"
-        form-field="password"
+          :v$field="v$.password"
+          placeholder="Пароль"
+          form-field="password"
       />
 
       <button type="submit" class="login-btn">Login</button>
@@ -21,11 +21,14 @@
 <script>
 import FormField from "@/components/form/FormField";
 
-import {useVuelidate} from '@vuelidate/core';
+import axios from "axios";
+import {useVuelidate} from "@vuelidate/core";
 
+import {urls} from "@/utils/api";
 import {success, error} from "@/utils/notifications";
 import {formData} from "@/utils/forms";
 import {rules} from "@/utils/validators";
+import {auth} from "@/utils/auth";
 
 export default {
   name: "Login",
@@ -33,30 +36,32 @@ export default {
     FormField,
   },
   setup() {
-    const loginFormData = formData.login;
-
-    const loginRules = rules.login();
-
-    const v$ = useVuelidate(loginRules, loginFormData)
+    const loginFormData = formData.login,
+        loginRules = rules.login(),
+        v$ = useVuelidate(loginRules, loginFormData);
 
     function login() {
-      // If data is valid
+      // Check if data is valid
       v$.value.$touch();
+      if (v$.value.$invalid) return error("Data is invalid!")
 
-      console.log(loginFormData)
-
-      if (v$.value.$invalid) {
-        return error("Data is invalid!")
-      }
-
-      success("You were logged in successfully").finally(() =>
-          location.reload()
-      );
+      axios.post(urls.login, {
+        username: loginFormData.username.value,
+        password: loginFormData.password.value
+      })
+          .then((res) => {
+            success("Вы успешно вошли в свой аккаунт!", "Успешно!")
+                .finally(() => location.reload());
+            auth.setCredentials(res.data)
+          })
+          .catch(() => {
+            error("Что-то пошло не так", "Ошибка!")
+                .finally(() => location.reload())
+          })
     }
 
     return {
-      login,
-      v$,
+      login, v$,
     };
   }
 };

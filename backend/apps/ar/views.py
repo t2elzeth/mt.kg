@@ -1,17 +1,19 @@
 import logging
 import os
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
-from django.conf import settings
-# Create your views here.
 from django.views.generic.base import View
+
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 from nodejs.bindings import node_run
 
+from . import models, serializers, permissions
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
-from .models import AR
 
 logging.basicConfig(
     filename=os.path.join(settings.BASE_DIR, 'add.log'),
@@ -20,23 +22,22 @@ logging.basicConfig(
 )
 
 
-class AllArView(CustomLoginRequiredMixin, View):
-    def get(self, request):
-        ars = AR.objects.all()
-        context = {
-            'ars': ars,
-        }
-        return render(request, 'ar/projects-page.html', context)
+class ArListView(generics.ListAPIView):
+    queryset = models.AR.objects.all()
+    serializer_class = serializers.ArListSerializer
 
 
-class ArDetailView(View):
-    def get(self, request, id):
-        ar = AR.objects.get(id=id)
+class ArCreateView(generics.CreateAPIView):
+    queryset = models.AR.objects.all()
+    serializer_class = serializers.ArCreateSerializer
+    permission_classes = [
+        IsAuthenticated, permissions.IsSuperUser
+    ]
 
-        context = {
-            'ar': ar
-        }
-        return render(request, 'ar/detail.html', context)
+
+class ArDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = serializers.ArDetailSerializer
+    queryset = models.AR.objects.all()
 
 
 class AddArView(CustomLoginRequiredMixin, View):
@@ -65,11 +66,11 @@ class AddArView(CustomLoginRequiredMixin, View):
             if img is None or vid is None:
                 return HttpResponse('Something went wrong. Image or video is None')
 
-            img_queryset = AR.objects.filter(img__endswith=img.name)
+            img_queryset = models.AR.objects.filter(img__endswith=img.name)
             if img_queryset:
                 return HttpResponse('Image with that name already exists. Try to rename your image')
 
-            vid_queryset = AR.objects.filter(video__endswith=vid.name)
+            vid_queryset = models.AR.objects.filter(video__endswith=vid.name)
             if vid_queryset:
                 return HttpResponse('Video with that name already exists. Try to rename your image')
 
