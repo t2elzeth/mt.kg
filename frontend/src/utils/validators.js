@@ -1,4 +1,4 @@
-import {required, minLength, email, maxLength} from "@vuelidate/validators/dist/raw.esm";
+import {constants} from "@/utils/validation";
 
 export const isAlpha = (value) => {
     try {
@@ -8,64 +8,7 @@ export const isAlpha = (value) => {
     }
 }
 
-export const constants = {
-    minLength: {
-        phone: 8,
-        username: 5,
-        password: 8,
-    },
-    maxLength: {
-        comment: 1200
-    }
-};
-
-export const rules = {
-    email: {
-        email,
-        required
-    },
-    first_name: {
-        required,
-        isAlpha
-    },
-    last_name: {
-        required,
-        isAlpha
-    },
-    phone: {
-        required,
-        minLength: minLength(constants.minLength.phone)
-    },
-    comment: {
-        maxLength: maxLength(constants.maxLength.comment),
-    },
-    contactUs: function () {
-        return {
-            email: this.email,
-            first_name: this.first_name,
-            last_name: this.last_name,
-            phone: this.phone,
-            comment: this.comment,
-        }
-    },
-
-    username: {
-        required,
-        minLength: minLength(constants.minLength.username)
-    },
-    password: {
-        required,
-        minLength: minLength(constants.minLength.password)
-    },
-    login: function () {
-        return {
-            username: this.username,
-            password: this.password
-        }
-    },
-}
-
-const getValidator = {
+export const getValidator = {
     minLength: function (formField) {
         return {
             name: "minLength",
@@ -90,7 +33,7 @@ const getValidator = {
             message: `Это поле должно быть максимум ${constants.maxLength[formField]} символов в длину`
         };
     },
-    alpha: function () {
+    isAlpha: function () {
         return {
             name: "isAlpha",
             message: `Это поле должно содержать только буквы`
@@ -103,34 +46,3 @@ const getValidator = {
         };
     }
 };
-
-export const messages = {
-    email: [
-        getValidator.required('Email адрес'),
-        getValidator.email()
-    ],
-    first_name: [
-        getValidator.required(),
-        getValidator.alpha()
-    ],
-    last_name: [
-        getValidator.required(),
-        getValidator.alpha()
-    ],
-    phone: [
-        getValidator.required(),
-        getValidator.minLength('phone')
-    ],
-    comment: [
-        getValidator.maxLength('comment'),
-    ],
-    username: [
-        getValidator.required(),
-        getValidator.minLength('username')
-    ],
-    password: [
-        getValidator.required(),
-        getValidator.minLength('password')
-    ]
-}
-

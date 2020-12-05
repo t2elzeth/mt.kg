@@ -27,7 +27,7 @@ import {useVuelidate} from "@vuelidate/core";
 import {urls} from "@/utils/api";
 import {success, error} from "@/utils/notifications";
 import {formData} from "@/utils/forms";
-import {rules} from "@/utils/validators";
+import {rules} from "@/utils/validation";
 import {auth} from "@/utils/auth";
 
 export default {

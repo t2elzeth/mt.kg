@@ -44,7 +44,7 @@ import FormField from "@/components/form/FormField";
 
 import {success, error} from "@/utils/notifications";
 import {formData} from "@/utils/forms";
-import {rules} from "@/utils/validators";
+import {rules} from "@/utils/validation";
 import {sendMessage} from "@/utils/tgBotAPI";
 
 import {useVuelidate} from '@vuelidate/core'

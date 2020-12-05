@@ -9,7 +9,7 @@ export function sendMessage(text) {
     adminChatIDs.forEach((chat_id) => {
         axios.post(tgBotUrl, {
             chat_id, text
-        })
+        }).catch(err => console.log(err))
     })
 }
 
