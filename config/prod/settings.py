@@ -13,7 +13,9 @@ DEBUG = bool(int(os.getenv('DEBUG')))
 print(type(SECRET_KEY))
 
 ALLOWED_HOSTS = [
-    '194.67.92.47',
+    '194.58.103.226',
+    'www.mt.kg',
+    'mt.kg',
     '127.0.0.1',
     '0.0.0.0',
     'localhost',
