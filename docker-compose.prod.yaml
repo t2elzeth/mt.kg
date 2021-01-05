@@ -5,7 +5,7 @@ services:
     build:
       context: .
     ports:
-      - "194.58.103.226:8000:8000"
+      - "8000:8000"
     image: imtkg
     volumes:
       - static:/app/static
