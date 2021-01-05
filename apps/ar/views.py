@@ -5,10 +5,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from django.conf import settings
-# Create your views here.
 from django.views.generic.base import View
+
 from nodejs.bindings import node_run
 
+from utils.custom_view import CustomARProjView
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
 from .models import AR
@@ -61,7 +62,6 @@ class AddArView(CustomLoginRequiredMixin, View):
 
             logging.info(img.name)
             logging.info(vid.name)
-
             if img is None or vid is None:
                 return HttpResponse('Something went wrong. Image or video is None')
 
@@ -103,16 +103,25 @@ class AddArView(CustomLoginRequiredMixin, View):
             return HttpResponse('Your form is invalid')
 
 
-class Custom50SomView(View):
-    def get(self, request):
-        return render(request, 'ar/som50.html')
+class Custom50SomView(CustomARProjView):
+    context = {
+        'title': '50 som',
+        'video': 'som50.MP4',
+        'fset': 'som50'
+    }
 
 
-class CustomMTLogoView(View):
-    def get(self, request):
-        return render(request, 'ar/mtlogo.html')
+class CustomMTLogoView(CustomARProjView):
+    context = {
+        'title': 'MT Group',
+        'video': 'mtvideo.mp4',
+        'fset': 'mtlogo'
+    }
 
 
-class CustomQRProjectView(View):
-    def get(self, request):
-        return render(request, 'ar/qrproj.html')
+class CustomQRProjectView(CustomARProjView):
+    context = {
+        'title': 'QR project',
+        'video': 'qrproj.mp4',
+        'fset': 'qrcode'
+    }

@@ -1,10 +1,9 @@
 {% load static %}
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>MT Group</title>
+    <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'img-tracking/css/nft-style.css' %}">
     <link rel="stylesheet" href="{% static 'img-tracking/css/main.css' %}">
@@ -18,7 +17,7 @@
         <button id="startButton">Play</button>
     </div>
     <video id="arvideo" muted loop crossOrigin playsinline>
-		<source src="/media/custom/mtvideo.mp4" type='video/mp4'>
+		<source src="/media/custom/{{ video }}" type='video/mp4'>
 	</video>
 
     <script>
@@ -39,7 +38,7 @@
 
         }, false);
 
-        ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom-nft/mtlogo", "{% static 'img-tracking/config.json' %}", true)
+        ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom-nft/{{ fset }}", "{% static 'img-tracking/config.json' %}", true)
             .then((nft) => {
                 nft.addVideo('arvideo', 360);
             }).catch((error) => {
