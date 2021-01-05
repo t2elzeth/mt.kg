@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  django_gunicorn:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    image: imtkg
+    volumes:
+      - static:/app/static
+#    env_file:
+#      - .env
+  nginx:
+    build: ./production/nginx
+    volumes:
+      - static:/app/static
+    ports:
+      - "80:80"
+    depends_on:
+      - django_gunicorn
+
+volumes:
+  static:

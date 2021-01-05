@@ -3,13 +3,14 @@ import sys
 from pathlib import Path
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env.prod'))
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, 'config', 'prod', '.env.prod'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
-SECRET_KEY = 'n-7nyk0^80!nw&atk(6-@ogj^f2ttww5&p5xj@j@fygh7rig1u'
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = bool(int(os.getenv('DEBUG')))
+print(type(SECRET_KEY))
 
 ALLOWED_HOSTS = [
     '194.67.92.47',
@@ -42,7 +43,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'config.prod.urls'
 
 TEMPLATES = [
     {
@@ -62,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.prod.wsgi.application'
 
 DATABASES = {
     'default': {
