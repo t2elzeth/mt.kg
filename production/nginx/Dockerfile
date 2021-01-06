@@ -1,5 +1,7 @@
 FROM nginx
 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY ./mt.kg.crt /etc/ssl/mt.kg.crt
-COPY  ./mt.kg.key /etc/ssl/mt.kg.key
+WORKDIR /app
+
+COPY ./production/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./production/nginx/mt.kg.crt /etc/ssl/mt.kg.crt
+COPY ./production/nginx/mt.kg.key /etc/ssl/mt.kg.key

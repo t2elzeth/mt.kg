@@ -4,6 +4,7 @@ python manage.py makemigrations --no-input
 python manage.py migrate --no-input
 python manage.py collectstatic --no-input
 
-#gunicorn config.wsgi:application --bind 0.0.0.0:8000
-exec gunicorn -c "/app/production/gunicorn/gunicorn_config.py" config.prod.wsgi
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('mtkg', 'mtkg@gmail.com', 'sssss05s')" | python manage.py shell
+
+gunicorn -c "/app/production/gunicorn/gunicorn_config.py" config.prod.wsgi
 

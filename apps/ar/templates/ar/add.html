@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Добавить AR проект {% endblock title %} {% block content %}
+{% extends 'ar/base.html' %} {% load static %} {% block title %} Добавить AR проект {% endblock title %} {% block content %}
 <form method="post" class="form-group" enctype="multipart/form-data" action="">
     {% csrf_token %}
     <label for="id_title">Название</label>
