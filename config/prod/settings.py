@@ -10,7 +10,6 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = bool(int(os.getenv('DEBUG')))
-print(type(SECRET_KEY))
 
 ALLOWED_HOSTS = [
     '194.58.103.226',

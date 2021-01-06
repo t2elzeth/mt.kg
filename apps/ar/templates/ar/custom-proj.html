@@ -17,7 +17,7 @@
         <button id="startButton">Play</button>
     </div>
     <video id="arvideo" muted loop crossOrigin playsinline>
-		<source src="/static/img-tracking/data/custom/videos/{{ video }}" type='video/mp4'>
+		<source src="{% static 'img-tracking/data/custom/videos/'|add:video %}" type='video/mp4'>
 	</video>
 
     <script>
