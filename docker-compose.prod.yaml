@@ -9,14 +9,13 @@ services:
     image: imtkg
     volumes:
       - static:/app/static
-#    env_file:
-#      - .env
   nginx:
     build: ./production/nginx
     volumes:
       - static:/app/static
     ports:
-      - "80:80"
+      - "194.58.103.226:80:80"
+      - "443:443"
     depends_on:
       - django_gunicorn
 
