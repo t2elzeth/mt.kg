@@ -110,6 +110,13 @@ class Custom50SomView(CustomARProjView):
         'fset': 'som50'
     }
 
+class Custom200SomView(CustomARProjView):
+    context = {
+        'title': '200 som',
+        'video': 'som50.MP4',
+        'fset': 'som200'
+    }
+
 
 class CustomMTLogoView(CustomARProjView):
     context = {
