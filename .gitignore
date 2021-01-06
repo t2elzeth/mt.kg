@@ -13,7 +13,7 @@ generator/package-lock.json
 *.so
 
 # Distribution / packaging
-.idea
+.idea/
 .Python
 static/admin/
 build/
