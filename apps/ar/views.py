@@ -110,6 +110,7 @@ class Custom50SomView(CustomARProjView):
         'fset': 'som50'
     }
 
+
 class Custom200SomView(CustomARProjView):
     context = {
         'title': '200 som',
