@@ -17,7 +17,7 @@
         <button id="startButton">Play</button>
     </div>
     <video id="arvideo" muted loop crossOrigin playsinline>
-		<source src="/media/custom/{{ video }}" type='video/mp4'>
+		<source src="/static/img-tracking/data/custom/videos/{{ video }}" type='video/mp4'>
 	</video>
 
     <script>
@@ -38,7 +38,7 @@
 
         }, false);
 
-        ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom-nft/{{ fset }}", "{% static 'img-tracking/config.json' %}", true)
+        ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom/nft/{{ fset }}", "{% static 'img-tracking/config.json' %}", true)
             .then((nft) => {
                 nft.addVideo('arvideo', 360);
             }).catch((error) => {
