@@ -15,6 +15,7 @@
     "inkjet": "^2.1.2",
     "jpeg-js": "^0.4.0",
     "pngjs": "^3.4.0",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "socket.io": "^3.0.5"
   }
 }

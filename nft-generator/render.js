@@ -20,12 +20,7 @@ let imageData = {
 }
 
 async function render(imagepath) {
-  if (!imagepath) {
-    console.log("\nERROR: No image in INPUT command!\n e.g:(-i /PATH/TO/IMAGE)\n");
-    process.exit(1);
-  } else {
-    srcImage = path.join(__dirname, imagepath);
-  }
+  srcImage = path.join(__dirname, imagepath);
 
   let fileNameWithExt = path.basename(srcImage);
   let fileName = path.parse(fileNameWithExt).name;
