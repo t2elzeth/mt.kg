@@ -122,7 +122,7 @@ class Custom200SomView(CustomARProjView):
 class CustomMTLogoView(CustomARProjView):
     context = {
         'title': 'MT Group',
-        'video': 'mtvideo.mp4',
+        'video': 'mt.mp4',
         'fset': 'mt'
     }
 
