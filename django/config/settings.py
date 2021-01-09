@@ -1,4 +1,5 @@
 import os
+import logging
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
@@ -10,6 +11,12 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = 'n-7nyk0^80!nw&atk(6-@ogj^f2ttww5&p5xj@j@fygh7rig1u'
 DEBUG = True
+
+logging.basicConfig(
+    filename=os.path.join(BASE_DIR, 'add.log'),
+    filemode='w',
+    level=logging.INFO
+)
 
 ALLOWED_HOSTS = [
     '194.67.92.47',

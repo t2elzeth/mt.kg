@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -8,6 +9,12 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = bool(int(os.getenv('DEBUG')))
+
+logging.basicConfig(
+    filename=os.path.join(BASE_DIR, 'add.log'),
+    filemode='w',
+    level=logging.INFO
+)
 
 ALLOWED_HOSTS = [
     '194.58.103.226',

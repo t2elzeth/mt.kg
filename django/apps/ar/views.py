@@ -1,7 +1,6 @@
 import logging
 import os
 import json
-from pathlib import Path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -14,47 +13,26 @@ from nodejs.bindings import node_run
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
 from .models import AR
-
-logging.basicConfig(
-    filename=os.path.join(settings.BASE_DIR, 'add.log'),
-    filemode='w',
-    level=logging.INFO
-)
-
-APP_DIR = Path(__file__).resolve().parent
+from django.contrib.staticfiles.finders import find
 
 
 class AllArView(CustomLoginRequiredMixin, View):
     def get(self, request):
         ars = AR.objects.all()
-        context = {
-            'ars': ars,
-        }
-        return render(request, 'ar/projects-page.html', context)
+        return render(request, 'ar/projects-page.html', {'ars': ars})
 
 
 class ArDetailView(View):
     def get(self, request, id):
         ar = AR.objects.get(id=id)
-
-        context = {
-            'ar': ar
-        }
-        return render(request, 'ar/detail.html', context)
+        return render(request, 'ar/detail.html', {'ar': ar})
 
 
 class AddArView(CustomLoginRequiredMixin, View):
-    allowed_image_exts = (
-        '.png',
-        '.jpg'
-    )
+    allowed_image_exts = ('.png', '.jpg')
 
     def get(self, request):
-        form = AddARForm()
-        context = {
-            'form': form,
-        }
-        return render(request, 'ar/add.html', context)
+        return render(request, 'ar/add.html', {'form': AddARForm()})
 
     def post(self, request):
         form = AddARForm(request.POST, request.FILES)
@@ -93,11 +71,7 @@ class AddArView(CustomLoginRequiredMixin, View):
             img_path = os.path.join('../media/images', img.name)
             script_path = os.path.join(settings.BASE_DIR, 'generator/app.js')
 
-            stderr, stdout = node_run(
-                script_path,
-                '-i',
-                img_path,
-            )
+            stderr, stdout = node_run(script_path, '-i', img_path)
             logging.info('Node has run')
             logging.info(stderr)
             logging.info(stdout)
@@ -106,35 +80,10 @@ class AddArView(CustomLoginRequiredMixin, View):
             return HttpResponse('Your form is invalid')
 
 
-<<<<<<< HEAD:django/apps/ar/views.py
-class Custom50SomView(CustomARProjView):
-    context = {
-        'title': '50 som',
-        'video': 'som50.MP4',
-        'fset': 'som50'
-    }
-
-
-class Custom200SomView(CustomARProjView):
-    context = {
-        'title': '200 som',
-        'video': 'som50.MP4',
-        'fset': 'som200'
-    }
-
-
-class CustomMTLogoView(CustomARProjView):
-    context = {
-        'title': 'MT Group',
-        'video': 'mtvideo.mp4',
-        'fset': 'mtlogo'
-    }
-=======
 class CustomProjectView(View):
     def get(self, request, project_name):
-        with open(os.path.join(APP_DIR, "custom_projects.json")) as f:
+        with open(find("custom_projects.json")) as f:
             projects = json.load(f)
->>>>>>> origin/master:apps/ar/views.py
 
         context = projects.get(project_name)
         if context is None:
