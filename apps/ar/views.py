@@ -127,9 +127,9 @@ class CustomMTLogoView(CustomARProjView):
     }
 
 
-class CustomQRProjectView(CustomARProjView):
+class CustomKoffProjectView(CustomARProjView):
     context = {
-        'title': 'QR project',
-        'video': 'qrproj.mp4',
-        'fset': 'qrcode'
+        'title': 'Koff',
+        'video': 'koff.mp4',
+        'fset': 'koff'
     }
