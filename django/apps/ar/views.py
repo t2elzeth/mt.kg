@@ -1,5 +1,7 @@
 import logging
 import os
+import json
+from pathlib import Path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -9,7 +11,6 @@ from django.views.generic.base import View
 
 from nodejs.bindings import node_run
 
-from utils.custom_view import CustomARProjView
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
 from .models import AR
@@ -19,6 +20,8 @@ logging.basicConfig(
     filemode='w',
     level=logging.INFO
 )
+
+APP_DIR = Path(__file__).resolve().parent
 
 
 class AllArView(CustomLoginRequiredMixin, View):
@@ -103,6 +106,7 @@ class AddArView(CustomLoginRequiredMixin, View):
             return HttpResponse('Your form is invalid')
 
 
+<<<<<<< HEAD:django/apps/ar/views.py
 class Custom50SomView(CustomARProjView):
     context = {
         'title': '50 som',
@@ -125,11 +129,15 @@ class CustomMTLogoView(CustomARProjView):
         'video': 'mtvideo.mp4',
         'fset': 'mtlogo'
     }
+=======
+class CustomProjectView(View):
+    def get(self, request, project_name):
+        with open(os.path.join(APP_DIR, "custom_projects.json")) as f:
+            projects = json.load(f)
+>>>>>>> origin/master:apps/ar/views.py
 
+        context = projects.get(project_name)
+        if context is None:
+            return HttpResponse("Requested project was not found")
 
-class CustomQRProjectView(CustomARProjView):
-    context = {
-        'title': 'QR project',
-        'video': 'qrproj.mp4',
-        'fset': 'qrcode'
-    }
+        return render(request, 'ar/custom-proj.html', context=context)
