@@ -1,0 +1,4 @@
+from .add_ar_view import AddARViewMethodsManager
+from .all_ar_view import AllARViewMethodsManager
+from .ar_detail_view import ARDetailViewMethodsManager
+from .custom_project_view import CustomProjectsViewMethodsManager

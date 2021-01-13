@@ -1,0 +1,2 @@
+class MustReturnNone(Exception):
+    pass
