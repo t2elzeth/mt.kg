@@ -1,4 +1,4 @@
-from library.business_logic.methods import BaseGetMethodWithTemplateRendering
+from library.django_services_management.methods import BaseGetMethodWithTemplateRendering
 
 from ar.models import AR
 

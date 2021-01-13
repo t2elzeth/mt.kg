@@ -10,9 +10,9 @@ from django.views.generic.base import View
 
 from nodejs.bindings import node_run
 
-from library.business_logic.views import View as CustomView
+from library.django_services_management.views import View as CustomView
 
-from .business_logic import (
+from .services import (
     AddARViewMethodsManager,
     ARDetailViewMethodsManager,
     AllARViewMethodsManager,

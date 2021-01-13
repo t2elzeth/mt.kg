@@ -1,5 +1,5 @@
 from .methods import post, Get
-from library.business_logic import MethodsManager
+from library.django_services_management import MethodsManager
 
 
 class AddARViewMethodsManager(MethodsManager):

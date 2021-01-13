@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from library.business_logic.methods import BaseGetMethod
+from library.django_services_management.methods import BaseGetMethod
 
 from ar.models import AR
 

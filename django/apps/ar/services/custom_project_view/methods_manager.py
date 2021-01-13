@@ -1,4 +1,4 @@
-from library.business_logic import MethodsManager
+from library.django_services_management import MethodsManager
 
 from .methods import get, post
 
