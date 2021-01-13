@@ -12,7 +12,7 @@ from nodejs.bindings import node_run
 
 from library.django_services_management.views import View as CustomView
 
-from .services.views import (
+from .services import (
     AddARViewMethodsManager,
     ARDetailViewMethodsManager,
     AllARViewMethodsManager,
