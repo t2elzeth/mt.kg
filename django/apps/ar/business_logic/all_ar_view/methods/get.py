@@ -1,11 +1,10 @@
-from django.shortcuts import render
-
-from library.business_logic.methods import BaseGetMethod
+from library.business_logic.methods import BaseGetMethodWithTemplateRendering
 
 from ar.models import AR
 
 
-class Get(BaseGetMethod):
-    def main(self):
-        ars = AR.objects.all()
-        return render(self.request, 'ar/projects-page.html', {'ars': ars})
+class Get(BaseGetMethodWithTemplateRendering):
+    template_name = "ar/projects-page.html"
+
+    def get_context(self) -> dict:
+        return {"ars": AR.objects.all()}
