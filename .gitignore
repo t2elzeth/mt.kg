@@ -6,7 +6,6 @@ __pycache__/
 *$py.class
 
 
-ignoreme2/
 # C extensions
 *.so
 
