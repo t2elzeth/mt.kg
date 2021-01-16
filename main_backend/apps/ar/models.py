@@ -8,9 +8,9 @@ User = get_user_model()
 
 class AR(models.Model):
     """Model for each AR project with its own photo and video"""
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ars")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ars", blank=True, null=True)
     title = models.CharField(max_length=255)
-    img = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
     video = models.FileField(upload_to='videos/', blank=True, null=True)
     is_rendered = models.BooleanField(default=False)
 
@@ -20,10 +20,10 @@ class AR(models.Model):
     def videoname(self):
         return os.path.basename(self.video.name)
 
-    def imgname(self):
-        name_with_ext = os.path.basename(self.img.name)
+    def imagename(self):
+        name_with_ext = os.path.basename(self.image.name)
         name_without_ext, ext = os.path.splitext(name_with_ext)
-        return name_without_ext.split('_')[0]
+        return name_without_ext
 
     class Meta:
         verbose_name_plural = 'AR проекты'

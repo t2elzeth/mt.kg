@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3d party
+    'rest_framework',
+
     # own
     'homepage',
     'ar',

@@ -7,7 +7,7 @@ class ARListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.AR
         fields = [
-            "id", "img"
+            "id", "image"
         ]
 
 

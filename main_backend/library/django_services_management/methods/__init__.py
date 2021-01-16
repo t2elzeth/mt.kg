@@ -1,2 +1,2 @@
-from .get import BaseMethod, BaseGetMethodWithTemplateRendering
+from .get import BaseMethod, BaseGetMethod, BaseGetMethodWithTemplateRendering
 from .post import BasePostMethod, BasePostMethodWithForm
