@@ -43,6 +43,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+ROOT_URLCONF = 'config.common.urls'
+
+
+WSGI_APPLICATION = 'config.common.wsgi.application'
+
 
 TEMPLATES = [
     {
