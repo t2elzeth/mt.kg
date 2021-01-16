@@ -14,9 +14,13 @@ class ARUpdateIsRendered(generics.UpdateAPIView):
     queryset = models.AR.objects.filter(is_rendered=False)
 
     def perform_update(self, serializer):
-        instance: models.AR = self.get_object()
-        # instance.owner.email_user("Your AR has been rendered out!",
-        #                           "Your AR project is ready to use!")
+        code = serializer.validated_data.get("code")
 
-        instance.is_rendered = True
-        instance.save()
+        if code == 0:
+            instance: models.AR = self.get_object()
+            # instance.owner.email_user("Your AR has been rendered out!",
+            #                           "Your AR project is ready to use!")
+
+            instance.is_rendered = True
+            return instance.save()
+        print("An error occured!")

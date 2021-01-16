@@ -3,20 +3,18 @@ const express = require("express");
 const socketio = require("socket.io")
 
 const app = express();
+
 const server = http.createServer(app)
 const io = socketio(server);
 const PORT = 8920
 
 io.on("connection", socket => {
-  console.log("New WS connection");
+  console.log("Successfully connected!");
 
-  socket.emit("welcome", "Welcome to the server!");
-  socket.on("welcome-back", message => {
-    console.log(message);
+  socket.on("new-project", () => {
   })
 
-  socket.on("render", imagepath => {
-    console.log("Received an image to render: ", imagepath)
+  socket.on("no-projects", () => {
   })
 
   socket.on("disconnect", () => {
