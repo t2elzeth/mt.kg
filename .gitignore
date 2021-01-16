@@ -5,10 +5,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-generator/node_modules/
-generator/.vscode/
-generator/package-lock.json
 
+main_backend_images/
+output/
 # C extensions
 *.so
 
