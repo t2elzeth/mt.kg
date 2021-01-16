@@ -1,6 +1,6 @@
 from library.django_services_management import MethodsManager
 
-from .methods import get, post
+from .methods import get
 
 
 class CustomProjectsViewMethodsManager(MethodsManager):
