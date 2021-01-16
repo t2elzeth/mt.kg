@@ -6,8 +6,6 @@ __pycache__/
 *$py.class
 
 
-main_backend_images/
-output/
 # C extensions
 *.so
 
