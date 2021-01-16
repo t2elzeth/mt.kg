@@ -3,6 +3,8 @@ import os
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from . import storage
+
 User = get_user_model()
 
 
@@ -10,8 +12,8 @@ class AR(models.Model):
     """Model for each AR project with its own photo and video"""
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ars", blank=True, null=True)
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
-    video = models.FileField(upload_to='videos/', blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, storage=storage.ImageStorage)
+    video = models.FileField(upload_to='img-tracking/data/videos/', blank=True, null=True)
     is_rendered = models.BooleanField(default=False)
 
     def __str__(self):
