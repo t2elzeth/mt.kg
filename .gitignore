@@ -6,8 +6,10 @@ __pycache__/
 *$py.class
 
 
-ignoreme/
-# C extensions
+main_backend_images/
+output/
+**/data/videos/
+#C extensions
 *.so
 
 # Distribution / packaging
