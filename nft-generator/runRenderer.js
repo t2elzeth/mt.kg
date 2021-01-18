@@ -12,12 +12,12 @@ const urls = {
 
 let working = false;
 
-function checkNotRenderedProjects(data = null) {
+function checkForNewProjects(data = null) {
   if (data === null) return null
 
   startRenderer(data["id"], data["imagename"])
   axios.get(urls.all)
-       .then(res => res.data.length ? checkNotRenderedProjects(data[0]) : working = false)
+       .then(res => res.data.length ? checkForNewProjects(data[0]) : working = false)
 }
 
 function startRenderer(id, imagename) {
@@ -34,3 +34,5 @@ function updateProjectStatus(id, code) {
 }
 
 const getImagePath = (imagename) => path.join("./main_backend_images/", imagename)
+
+module.exports = checkForNewProjects
