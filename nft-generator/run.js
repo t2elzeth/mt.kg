@@ -10,17 +10,18 @@ const urls = {
   update: (id) => urljoin(apiServer, "api/v1/ar/not_rendered/update/", String(id), "/")
 }
 
-const runChecker = () => setInterval(checkNotRenderedProjects, 3000)
-let interval = runChecker()
+let working = false;
 
+function checkNotRenderedProjects(data = null) {
+  if (data === null) return null
 
-function checkNotRenderedProjects() {
+  startRenderer(data["id"], data["imagename"])
   axios.get(urls.all)
-       .then(res => res.data.length ? startRenderer(data[0]["id"], data[0]["imagename"]) : console.log("No data!"))
+       .then(res => res.data.length ? checkNotRenderedProjects(data[0]) : working = false)
 }
 
 function startRenderer(id, imagename) {
-  clearInterval(interval)
+  working = true;
 
   cp.fork("./app.js", ["-i", getImagePath(imagename)], {silent: true})
     .on("exit", code => updateProjectStatus(id, code))
@@ -28,8 +29,6 @@ function startRenderer(id, imagename) {
 
 
 function updateProjectStatus(id, code) {
-  interval = runChecker()
-
   axios.put(urls.update(data["id"]), {code})
        .catch(err => console.log(err))
 }
