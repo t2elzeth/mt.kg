@@ -17,17 +17,20 @@ const main = (data = null) => dataExists(data) ? startRender(data) : checkForNew
 
 const dataExists = (data) => data !== null
 
+function startRender(data) {
+  console.log("Project found", data)
+  return new Promise(resolve => render(data).then(resolve).catch(console.log))
+}
+
 function checkForNewProjects() {
   console.log("Fetching new projects", working)
   axios.get(urls.all).then(manageWork)
 }
 
+
 const manageWork = ({data}) => newProjectsExist(data) ? startWorking(data[0]) : finishWorking()
 
-function startRender(data) {
-  console.log("Project found", data)
-  return new Promise(resolve => render(data).then(resolve).catch(console.log))
-}
+const newProjectsExist = responseData => responseData.length > 0
 
 function startWorking(data) {
   working = true;
@@ -40,8 +43,6 @@ function finishWorking() {
   console.log("After finishing", working)
 }
 
-const newProjectsExist = responseData => responseData.length > 0
-
 
 function render(data) {
   return new Promise(resolve => spawnChildProcess(data).then(updateProjectStatus).then(resolve))
@@ -53,7 +54,6 @@ function spawnChildProcess({id, imagename}) {
     childProcess.on("exit", code => resolve({id, code}))
   })
 }
-
 
 const updateProjectStatus = ({id, code}) => {
   return new Promise(resolve => axios.put(urls.update(id), {code}).then(noArgsResolve(resolve)).catch(console.log))
