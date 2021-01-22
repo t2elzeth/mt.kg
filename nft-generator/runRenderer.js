@@ -44,9 +44,7 @@ function finishWorking() {
 }
 
 
-function render(data) {
-  return new Promise(resolve => spawnChildProcess(data).then(updateProjectStatus).then(resolve))
-}
+const render = data => new Promise(resolve => spawnChildProcess(data).then(updateProjectStatus).then(resolve))
 
 function spawnChildProcess({id, imagename}) {
   return new Promise(resolve => {
@@ -56,12 +54,10 @@ function spawnChildProcess({id, imagename}) {
 }
 
 const updateProjectStatus = ({id, code}) => {
-  return new Promise(resolve => axios.put(urls.update(id), {code}).then(noArgsResolve(resolve)).catch(console.log))
+  return new Promise(resolve => axios.put(urls.update(id), {code}).then(() => resolve()).catch(console.log))
 }
 
 const getImagePath = (imagename) => path.join("./main_backend_images/", imagename)
-
-const noArgsResolve = (resolve) => () => resolve()
 
 module.exports.render = main
 module.exports.getWorking = () => working;
