@@ -1,6 +1,6 @@
-import os
-import socketio
 from pathlib import Path
+
+import socketio
 
 io = socketio.Client()
 
@@ -9,15 +9,14 @@ IMAGES_DIR = 'img'
 tasks = []
 
 
-def send_imagepath(client: socketio.AsyncClient):
-    image = input("Enter the imagepath: ")
-    client.emit("render", os.path.join(IMAGES_DIR, image))
-
-
 @io.event
 def connect():
     print('Successfully connected!')
-    io.emit("render", os.path.join(IMAGES_DIR, 'som200.jpg'))
+    io.emit("new-project")
+
+
+def emit_new_project():
+    io.emit("new-project")
 
 
 @io.event

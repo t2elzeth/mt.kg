@@ -24,7 +24,6 @@ let imageData = {
 }
 
 Module.onRuntimeInitialized = async function(){
-    
     for (let j = 2; j < process.argv.length; j++) {
         if(process.argv[j].indexOf('-i') !== -1 || process.argv[j].indexOf('-I') !== -1){
             foundInputPath.b = true;

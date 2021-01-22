@@ -1,19 +1,19 @@
 const http = require("http");
 const express = require("express");
-const socketio = require("socket.io")
+const socketio = require("socket.io");
+
+const {render, getWorking, setWorking} = require("./runRenderer");
 
 const app = express();
-const server = http.createServer(app)
+const server = http.createServer(app);
 const io = socketio(server);
-const PORT = 8920
+const PORT = 8920;
 
 io.on("connection", socket => {
   console.log("Successfully connected!");
 
   socket.on("new-project", () => {
-  })
-
-  socket.on("no-projects", () => {
+    if (!getWorking()) return render();
   })
 
   socket.on("disconnect", () => console.log("Client has been disconnected!"))
