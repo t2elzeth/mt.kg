@@ -13,12 +13,11 @@ const urls = {
 let working = false;
 
 
-// If function was called with `data=null`, it fetches not rendered projects from API,
-// and if finds any, runs main() recursively until projects are all rendered
 const main = () => checkForNewProjects().then(startRender).catch(finishWorking)
 
 const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(main)
 
+// Fetches not rendered projects from API and if finds any, resolves, else rejects
 const checkForNewProjects = () => axios.get(urls.all).then(manageWork)
 
 const manageWork = ({data}) => newProjectsExist(data) ? Promise.resolve(data[0]) : Promise.reject()
