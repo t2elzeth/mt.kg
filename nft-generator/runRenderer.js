@@ -15,15 +15,13 @@ let working = false;
 
 // If function was called with `data=null`, it fetches not rendered projects from API,
 // and if finds any, runs main() recursively until projects are all rendered
-const main = (data = null) => dataExists(data) ? startRender(data) : checkForNewProjects()
+const main = () => checkForNewProjects().then(startRender).catch(finishWorking)
 
-const dataExists = data => data !== null
-
-const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(runMain)
+const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(main)
 
 const checkForNewProjects = () => axios.get(urls.all).then(manageWork)
 
-const manageWork = ({data}) => newProjectsExist(data) ? startRender(data[0]) : finishWorking()
+const manageWork = ({data}) => newProjectsExist(data) ? Promise.resolve(data[0]) : Promise.reject()
 
 const newProjectsExist = responseData => responseData.length > 0
 
@@ -51,10 +49,7 @@ const updateProjectStatus = ({id, code}) => {
   return axios.put(urls.update(id), {code}).then(() => Promise.resolve())
 }
 
-const runMain = (data = null) => main(data)
-
 const getImagePath = imagename => path.join("./main_backend_images/", imagename)
 
 module.exports.render = main
 module.exports.getWorking = () => working;
-module.exports.setWorking = (value) => working = value;

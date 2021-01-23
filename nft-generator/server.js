@@ -12,9 +12,7 @@ const PORT = 8920;
 io.on("connection", socket => {
   console.log("Successfully connected!");
 
-  socket.on("new-project", () => {
-    if (!getWorking()) return render();
-  })
+  socket.on("new-project", () => !getWorking() ? render() : console.log("It is already working, damn it"))
 
   socket.on("disconnect", () => console.log("Client has been disconnected!"))
 })
