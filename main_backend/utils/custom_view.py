@@ -6,7 +6,7 @@ class CustomARProjView(View):
     context = dict()
 
     def get(self, request):
-        return render(request, 'ar/custom-proj.html', context=self.context)
+        return render(request, 'ar/custom-project.html', context=self.context)
 
     def __init_subclass__(cls, **kwargs):
         context = getattr(cls, 'context')
