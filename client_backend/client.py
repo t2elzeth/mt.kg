@@ -20,27 +20,6 @@ def emit_new_project():
 
 
 @io.event
-def success(message):
-    print(message)
-
-
-@io.event
-def error(message):
-    print(message)
-
-
-@io.event
-def finished(message):
-    print(message)
-
-
-@io.event
-def welcome(message):
-    print(message)
-    io.emit("welcome-back", "Yes, than you!")
-
-
-@io.event
 def disconnect():
     print('Disconnected from server')
 

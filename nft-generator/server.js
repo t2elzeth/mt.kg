@@ -2,7 +2,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 
-const {render, getWorking, setWorking} = require("./runRenderer");
+const {render, getWorking} = require("./runRenderer");
 
 const app = express();
 const server = http.createServer(app);

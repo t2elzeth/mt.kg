@@ -19,31 +19,27 @@ const main = (data = null) => dataExists(data) ? startRender(data) : checkForNew
 
 const dataExists = data => data !== null
 
-const startRender = data => new Promise(resolve => render(data).then(resolve).catch(console.log))
+const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(runMain)
 
 const checkForNewProjects = () => axios.get(urls.all).then(manageWork)
 
-
-const manageWork = ({data}) => newProjectsExist(data) ? startWorking(data[0]) : finishWorking()
+const manageWork = ({data}) => newProjectsExist(data) ? startRender(data[0]) : finishWorking()
 
 const newProjectsExist = responseData => responseData.length > 0
 
+
 function startWorking(data) {
-  console.log("Started working with data: ", data)
+  console.log("Started working with data:", data)
   working = true;
-  return main(data).then(main)
+  return Promise.resolve(data)
 }
 
 function finishWorking() {
-  console.log("Before finishing", working)
   working = false;
-  console.log("After finishing", working)
+  console.log("Projects are all done. Falling asleep back")
 }
 
-
-const render = data => new Promise(resolve => spawnChildProcess(data).then(updateProjectStatus).then(resolve))
-
-function spawnChildProcess({id, imagename}) {
+function startChildProcess({id, imagename}) {
   return new Promise(resolve => {
     const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)], {silent: true})
     childProcess.on("exit", code => resolve({id, code}))
@@ -51,8 +47,11 @@ function spawnChildProcess({id, imagename}) {
 }
 
 const updateProjectStatus = ({id, code}) => {
-  return new Promise(resolve => axios.put(urls.update(id), {code}).then(() => resolve()).catch(console.log))
+  console.log("Finished rendering project #id:", id)
+  return axios.put(urls.update(id), {code}).then(() => Promise.resolve())
 }
+
+const runMain = (data = null) => main(data)
 
 const getImagePath = imagename => path.join("./main_backend_images/", imagename)
 
