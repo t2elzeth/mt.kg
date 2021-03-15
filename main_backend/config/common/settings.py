@@ -13,11 +13,7 @@ logging.basicConfig(
 )
 
 ALLOWED_HOSTS = [
-    '194.67.92.47',
-    '127.0.0.1',
-    '0.0.0.0',
-    'localhost',
-    'django'
+    '*'
 ]
 
 INSTALLED_APPS = [
