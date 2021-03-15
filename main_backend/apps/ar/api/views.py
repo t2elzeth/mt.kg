@@ -1,17 +1,20 @@
-from rest_framework import generics
+from rest_framework import mixins, viewsets
 
 from . import serializers
 from .. import models
 
 
-class ARListNotRenderedView(generics.ListAPIView):
+class ARNotRenderedView(mixins.ListModelMixin,
+                        mixins.UpdateModelMixin,
+                        viewsets.GenericViewSet):
     serializer_class = serializers.ARListSerializer
     queryset = models.AR.objects.filter(is_rendered=False)
 
-
-class ARUpdateIsRendered(generics.UpdateAPIView):
-    serializer_class = serializers.ARIsRenderedSerializer
-    queryset = models.AR.objects.filter(is_rendered=False)
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return serializers.ARListSerializer
+        elif self.action == 'update':
+            return serializers.ARIsRenderedSerializer
 
     def perform_update(self, serializer):
         code = serializer.validated_data.get("code")

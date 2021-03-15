@@ -10,7 +10,7 @@
 
 	<div class="table">
 	    <i>Проекты</i>
-		{% for ar in ars %}
+		{% for ar in ar_list %}
 			<div class="text-danger"><a href="{% url 'detail_ar' ar.id %}">{{ ar.title }}</a></div>
 		{% endfor %}
 	</div>

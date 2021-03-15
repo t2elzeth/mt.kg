@@ -1,72 +1,64 @@
-import os
+import json
 
-from django.forms import ModelForm
+from django.contrib.staticfiles.finders import find
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic.base import View
+from django.views.generic import FormView, DetailView, ListView, TemplateView
 
-from socketio_app.networking import emit_new_project
+# from socketio_app.networking import emit_new_project
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
 from .models import AR
-from .services.views.custom_project import load_json_from_static, get_context
 
 
-class AllArView(CustomLoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, "ar/projects-page.html", {"ars": AR.objects.filter(owner=request.user)})
+class AllArView(CustomLoginRequiredMixin, ListView):
+    template_name = 'ar/projects-page.html'
+    model = AR
+
+    def get_queryset(self):
+        return self.model.objects.filter(owner=self.request.user)
 
 
-class ArDetailView(View):
-    def get(self, request, id):
-        # TODO: Refactor JS in <script> tag of template
-        return render(self.request, "ar/detail.html", {"ar": AR.objects.get(id=id)})
+class ArDetailView(DetailView):
+    template_name = 'ar/detail.html'
+    model = AR
 
 
-class AddArView(CustomLoginRequiredMixin, View):
-    ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
-    ALLOWED_VIDEO_EXTENSIONS = [".mp4"]
+class AddArView(CustomLoginRequiredMixin, FormView):
+    form_class = AddARForm
+    template_name = 'ar/add.html'
 
-    def get(self, request):
-        return render(request, "ar/add.html", {"form": AddARForm()})
+    def form_invalid(self, form):
+        return render(self.request, 'ar/invalidForm.html')
 
-    def set_instance_user(self, form: ModelForm):
-        """Set `owner` field of instance"""
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        instance.save()
-        return instance
+    def form_valid(self, form):
+        form.save()
+        # emit_new_project()
+        return render(self.request, 'ar/ok.html')
 
-    @staticmethod
-    def valid_extension(filename, possible_extensions):
-        _, file_ext = os.path.splitext(filename)
-        return file_ext in possible_extensions
-
-    def post(self, request):
-        form = AddARForm(request.POST, request.FILES)
-        if not form.is_valid():
-            return HttpResponse('Your form is invalid')
-
-        # Validate image extensions
-        if not self.valid_extension(form.cleaned_data.get("image").name, self.ALLOWED_IMAGE_EXTENSIONS):
-            return HttpResponse('Invalid image type. Should be ' + ' or '.join(self.ALLOWED_IMAGE_EXTENSIONS))
-
-        # Validate video extensions
-        if not self.valid_extension(form.cleaned_data.get("video").name, self.ALLOWED_VIDEO_EXTENSIONS):
-            return HttpResponse('Invalid image type. Should be ' + ' or '.join(self.ALLOWED_VIDEO_EXTENSIONS))
-
-        self.set_instance_user(form)
-        # Tell nft-generator about new project
-        emit_new_project()
-
-        # Tell user that everything is OK.
-        return render(request, "ar/ok.html")
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
 
 
-class CustomProjectView(View):
-    def get(self, request, project_name):
-        context = get_context(load_json_from_static("custom_projects.json"), project_name)
-        if not context:
-            HttpResponse("Requested project was not found")
+class CustomProjectView(TemplateView):
+    template_name = 'ar/custom-project.html'
 
-        return render(request, 'ar/custom-project.html', context=context)
+    @property
+    def custom_project(self):
+        with open(find('custom_projects.json')) as f:
+            all_projects = json.load(f)
+            project_name = self.kwargs['project_name']
+            return all_projects.get(project_name)
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.custom_project is None:
+            return HttpResponse('Requested project was not found')
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        base_context = super().get_context_data(**kwargs)
+        base_context.update(self.custom_project)
+        return base_context
