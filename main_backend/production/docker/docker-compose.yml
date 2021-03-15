@@ -8,8 +8,6 @@ services:
     ports:
       - "8000:8000"
     image: imtkg
-    env_file:
-      - .env.prod
     volumes:
       - ../../static:/app/static
   nginx:

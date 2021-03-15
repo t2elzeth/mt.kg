@@ -2,8 +2,10 @@ import os
 import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+SECRET_KEY = 'n-7nyk0^80!nw&atk(6-@ogj^f2ttww5&p5xj@j@fygh7rig1u'
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '*'
@@ -35,16 +37,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.common.urls'
+ROOT_URLCONF = 'core.urls'
 
-WSGI_APPLICATION = 'config.common.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
