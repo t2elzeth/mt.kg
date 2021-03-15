@@ -6,8 +6,8 @@ const urljoin = require("url-join");
 const apiServer = "http://127.0.0.1:8001"
 
 const urls = {
-  all: urljoin(apiServer, "api/v1/ar/not_rendered/all/"),
-  update: (id) => urljoin(apiServer, "api/v1/ar/not_rendered/update/", String(id), "/")
+  all: urljoin(apiServer, "api/v1/ar/not_rendered/"),
+  update: (id) => urljoin(apiServer, "api/v1/ar/not_rendered/", String(id), "/")
 }
 
 let working = false;
